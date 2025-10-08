@@ -19,6 +19,10 @@ import {
 export class CoverageController {
   private readonly logger = new Logger(CoverageController.name);
   private readonly providerFilter: number[];
+  private readonly technologyFilter: string[];
+  private readonly includeVariants: string[];
+  private readonly excludeVariants: string[];
+  private readonly excludeProfilePriorities: number[];
 
   constructor(
     private readonly twtService: TwtService,
@@ -30,10 +34,59 @@ export class CoverageController {
       ? filterString.split(',').map(id => parseInt(id.trim(), 10)).filter(id => !isNaN(id))
       : [];
 
+    // Parse technology filter from environment variable
+    const techFilterString = this.configService.get<string>('TWT_TECHNOLOGY_FILTER', '');
+    this.technologyFilter = techFilterString
+      ? techFilterString.split(',').map(tech => tech.trim().toUpperCase())
+      : [];
+
+    // Parse include variants from environment variable
+    const includeString = this.configService.get<string>('TWT_INCLUDE_VARIANTS', '');
+    this.includeVariants = includeString
+      ? includeString.split(',').map(variant => variant.trim())
+      : [];
+
+    // Parse exclude variants from environment variable
+    const excludeString = this.configService.get<string>('TWT_EXCLUDE_VARIANTS', '');
+    this.excludeVariants = excludeString
+      ? excludeString.split(',').map(variant => variant.trim())
+      : [];
+
+    // Parse exclude profile priorities from environment variable
+    const excludePrioritiesString = this.configService.get<string>('EXCLUDE_PROFILES_WITH_PRIORITY', '');
+    this.excludeProfilePriorities = excludePrioritiesString
+      ? excludePrioritiesString.split(',').map(priority => parseInt(priority.trim(), 10)).filter(p => !isNaN(p))
+      : [];
+
+    // Log active filters
     if (this.providerFilter.length > 0) {
       this.logger.log(`Provider filter active: ${this.providerFilter.join(', ')}`);
     } else {
       this.logger.log('No provider filter - showing all providers');
+    }
+
+    if (this.technologyFilter.length > 0) {
+      this.logger.log(`Technology filter active: ${this.technologyFilter.join(', ')}`);
+    } else {
+      this.logger.log('No technology filter - showing all technologies');
+    }
+
+    if (this.includeVariants.length > 0) {
+      this.logger.log(`Including ONLY variants: ${this.includeVariants.join(', ')}`);
+    } else {
+      this.logger.log('No variant inclusion filter - all variants allowed');
+    }
+
+    if (this.excludeVariants.length > 0) {
+      this.logger.log(`Excluding variants: ${this.excludeVariants.join(', ')}`);
+    } else {
+      this.logger.log('No variant exclusions');
+    }
+
+    if (this.excludeProfilePriorities.length > 0) {
+      this.logger.log(`Excluding profiles with priority: ${this.excludeProfilePriorities.join(', ')}`);
+    } else {
+      this.logger.log('No profile priority exclusions');
     }
   }
 
@@ -226,9 +279,11 @@ export class CoverageController {
     );
 
     // Trasforma la risposta TWT nel formato atteso dal frontend
-    // Filtra solo servizi con StatusCoverage=true, selezionabili e provider configurato
+    // Filtra solo servizi con StatusCoverage=true, selezionabili, provider e tecnologia configurati
     const availableServices = response.Body?.AvailabilityReports?.filter(
       (service) => {
+        const serviceName = service.ServiceName || '';
+
         // Verifica che il servizio sia disponibile e selezionabile
         if (!service.StatusCoverage || !service.Selectable) return false;
 
@@ -237,29 +292,168 @@ export class CoverageController {
           const hasMatchingProvider = service.Providers?.some(provider =>
             this.providerFilter.includes(provider.Id)
           );
-          return hasMatchingProvider;
+          if (!hasMatchingProvider) return false;
         }
 
-        // Nessun filtro: mostra tutti i servizi disponibili e selezionabili
+        // Filtro tecnologia: controlla se ServiceName contiene una delle tecnologie consentite
+        if (this.technologyFilter.length > 0) {
+          const serviceNameUpper = serviceName.toUpperCase();
+          const hasTechnology = this.technologyFilter.some(tech =>
+            serviceNameUpper.includes(tech)
+          );
+          if (!hasTechnology) return false;
+        }
+
+        // Include SOLO varianti specificate (se configurato)
+        // Se TWT_INCLUDE_VARIANTS è impostato, il servizio DEVE contenere almeno una keyword
+        if (this.includeVariants.length > 0) {
+          const hasIncludedVariant = this.includeVariants.some(variant =>
+            serviceName.includes(variant)
+          );
+          if (!hasIncludedVariant) return false;
+        }
+
+        // Escludi varianti: controlla se ServiceName contiene keyword da escludere
+        // EXCLUDE ha priorità su INCLUDE (se un servizio passa INCLUDE ma è in EXCLUDE, viene escluso)
+        if (this.excludeVariants.length > 0) {
+          const hasExcludedVariant = this.excludeVariants.some(variant =>
+            serviceName.includes(variant)
+          );
+          if (hasExcludedVariant) return false;
+        }
+
+        // Tutti i filtri passati
         return true;
       }
     ) || [];
 
+    this.logger.log(
+      `Filtered services: ${availableServices.length} out of ${response.Body?.AvailabilityReports?.length || 0} total services`
+    );
+
+    // Per ogni servizio disponibile, ottieni i profili dal listino
+    const servicesWithProfiles = await Promise.all(
+      availableServices.map(async (service) => {
+        let profiles: any[] = [];
+
+        try {
+          // Prepara i fornitori per la chiamata GetListino
+          // Filtra i provider basandosi sul filtro configurato
+          let providersForListino = service.Providers?.map(provider => ({
+            IdFornitore: provider.Id,
+            SpeedLimit: provider.SpeedLimit,
+          })) || [];
+
+          // Applica il filtro provider se configurato
+          if (this.providerFilter.length > 0) {
+            providersForListino = providersForListino.filter(provider =>
+              this.providerFilter.includes(provider.IdFornitore)
+            );
+          }
+
+          // Chiama GetListino solo se ci sono fornitori e i dati necessari
+          if (providersForListino.length > 0 && service.BsRsTipoProdotto && service.BsRsTipoServizio) {
+            this.logger.debug(
+              `Fetching profiles for service ${service.ServiceName} (ServiceId: ${service.ServiceId})`
+            );
+
+            const listinoResponse = await this.twtService.getListino(
+              providersForListino,
+              service.BsRsTipoProdotto,
+              service.BsRsTipoServizio,
+            );
+
+            // Estrai i profili dai prodotti
+            if (listinoResponse.Success && listinoResponse.Body?.Products) {
+              listinoResponse.Body.Products.forEach(product => {
+                // Ogni opzione rappresenta un profilo di velocità
+                product.Opzioni?.forEach(option => {
+                  // Skip profiles with excluded priorities
+                  if (this.excludeProfilePriorities.length > 0 &&
+                      this.excludeProfilePriorities.includes(option.Priorita)) {
+                    return; // Skip this profile
+                  }
+
+                  profiles.push({
+                    id: option.IDOpzione.toString(),
+                    productId: product.IDProdotto.toString(),
+                    description: option.Descrizione,
+                    downloadSpeed: option.Pcrdown ? Math.round(option.Pcrdown / 1024) : 0, // Converti da Kbps a Mbps
+                    uploadSpeed: option.Pcrup ? Math.round(option.Pcrup / 1024) : 0,
+                    providerId: product.IdFornitore,
+                    providerName: this.getProviderName(product.IdFornitore),
+                    activationCost: option.Attivazione,
+                    monthlyCost: option.Canone,
+                    priority: option.Priorita,
+                  });
+                });
+              });
+
+              this.logger.log(
+                `Found ${profiles.length} profiles for service ${service.ServiceName}`
+              );
+            }
+          }
+        } catch (error) {
+          this.logger.warn(
+            `Failed to fetch listino for service ${service.ServiceName}: ${error.message}`
+          );
+        }
+
+        return {
+          serviceId: service.ServiceId.toString(),
+          name: service.ServiceName,
+          description: service.ServiceDescription,
+          downloadSpeed: service.SpeedDown || service.MaxSpeedValue || 0,
+          uploadSpeed: service.SpeedUp || service.MaxSpeedValue || 0,
+          technology: service.ConnectionType,
+          available: service.StatusCoverage,
+          maxSpeed: service.MaxSpeed,
+          connectionElement: service.ConnectionElementName,
+          connectionElementDetail: service.ConnectionElementDetail,
+          distance: service.Distance,
+          // Dettagli completi per tutti i profili/provider disponibili
+          providers: service.Providers?.map(provider => ({
+            id: provider.Id,
+            name: this.getProviderName(provider.Id),
+            alarm: provider.Alarm,
+            notes: provider.Notes,
+            speedLimit: provider.SpeedLimit,
+            hasMultipleConnection: provider.HasMultipleConnection,
+            coverageDetails: provider.CoverageDetails,
+          })) || [],
+          // NUOVO: Array di profili di velocità disponibili
+          profiles: profiles,
+          // Informazioni tecniche aggiuntive
+          serviceTypeId: service.ServiceTypeId,
+          coverageId: service.CoverageId,
+          bsRsTipoServizio: service.BsRsTipoServizio,
+          bsRsTipoProdotto: service.BsRsTipoProdotto,
+          alarm: service.Alarm,
+          selectable: service.Selectable,
+          planned: service.Planned,
+        };
+      })
+    );
+
     return {
       success: response.Success,
-      data: availableServices.map((service) => ({
-        serviceId: service.ServiceId.toString(),
-        name: service.ServiceName,
-        description: service.ServiceDescription,
-        downloadSpeed: service.MaxSpeedValue || 0,
-        uploadSpeed: service.MaxSpeedValue || 0, // TWT non specifica upload separato
-        technology: service.ConnectionType,
-        available: service.StatusCoverage,
-        maxSpeed: service.MaxSpeed,
-        connectionElement: service.ConnectionElementName,
-      })),
+      data: servicesWithProfiles,
       errors: response.Errors || [],
     };
+  }
+
+  /**
+   * Helper per ottenere il nome del provider dall'ID
+   */
+  private getProviderName(providerId: number): string {
+    const providerNames = {
+      10: 'TIM',
+      20: 'Fastweb',
+      30: 'Altri',
+      160: 'FWA EW',
+    };
+    return providerNames[providerId] || `Provider ${providerId}`;
   }
 
   /**

@@ -96,11 +96,11 @@ npm run dev
 - **Backend API**: http://localhost:3000
 - **Swagger Docs**: http://localhost:3000/api/docs
 
-## ⚙️ Configurazione Filtro Provider
+## ⚙️ Configurazione Filtri Servizi
 
-Il sistema permette di filtrare i servizi per provider. Vedi [PROVIDER_FILTER.md](backend/PROVIDER_FILTER.md) per dettagli.
+Il sistema permette di filtrare i servizi per **provider**, **tecnologia** e **varianti**. Vedi [PROVIDER_FILTER.md](backend/PROVIDER_FILTER.md) per dettagli completi.
 
-**Esempi:**
+### Filtro Provider
 
 ```env
 # Solo TIM
@@ -118,6 +118,32 @@ TWT_PROVIDER_FILTER=
 - `20` = Fastweb
 - `30` = Altri
 - `160` = FWA EW
+
+### Filtro Tecnologia
+
+```env
+# Solo FTTC e FTTH
+TWT_TECHNOLOGY_FILTER=FTTC,FTTH
+
+# Solo FTTH
+TWT_TECHNOLOGY_FILTER=FTTH
+
+# Tutte le tecnologie
+TWT_TECHNOLOGY_FILTER=
+```
+
+### Esclusione Varianti
+
+```env
+# Escludi servizi "Lite"
+TWT_EXCLUDE_VARIANTS=Lite
+
+# Escludi Lite e VULA
+TWT_EXCLUDE_VARIANTS=Lite,VULA
+
+# Nessuna esclusione
+TWT_EXCLUDE_VARIANTS=
+```
 
 ## 📚 Documentazione API
 

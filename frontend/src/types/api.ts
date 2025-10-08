@@ -26,6 +26,19 @@ export interface CoverageHeader {
   egonCode: string;
 }
 
+export interface SpeedProfile {
+  id: string;
+  productId: string;
+  description: string;
+  downloadSpeed: number;
+  uploadSpeed: number;
+  providerId: number;
+  providerName: string;
+  activationCost: number;
+  monthlyCost: number;
+  priority: number;
+}
+
 export interface CoverageService {
   serviceId: string;
   name: string;
@@ -36,6 +49,7 @@ export interface CoverageService {
   available: boolean;
   maxSpeed: string;
   connectionElement: string;
+  profiles?: SpeedProfile[]; // Array di profili di velocità disponibili
 }
 
 export interface AutocompleteOption {

@@ -252,27 +252,65 @@ export class TwtService {
         }),
       );
 
-      // Filtra i servizi per includere solo il provider TIM (ID = 10)
+      // Log numero servizi ricevuti
       if (response.data.Success && response.data.Body) {
-        const filteredReports = response.data.Body.AvailabilityReports.map(
-          (report) => ({
-            ...report,
-            Providers: report.Providers.filter(
-              (provider) => provider.Id === this.timProviderId,
-            ),
-          }),
-        ).filter((report) => report.Providers.length > 0); // Rimuovi i servizi senza provider TIM
-
         this.logger.debug(
-          `Found ${filteredReports.length} services with TIM provider (filtered from ${response.data.Body.AvailabilityReports.length} total)`,
+          `Received ${response.data.Body.AvailabilityReports?.length || 0} services from TWT API`,
         );
-
-        response.data.Body.AvailabilityReports = filteredReports;
       }
 
       return response.data;
     } catch (error) {
       this.handleError(error as AxiosError, 'getCoverageServices');
+    }
+  }
+
+  /**
+   * GET /XdslBilling/GetListino
+   * Restituisce l'elenco dei profili attivabili per una determinata tipologia di circuito
+   * @param providers Array di fornitori con IdFornitore e SpeedLimit
+   * @param tipoProdotto Tipologia del prodotto (da BsRsTipoProdotto di GetCoverageServices)
+   * @param tipoServizio Tipologia del servizio (da BsRsTipoServizio di GetCoverageServices)
+   */
+  async getListino(
+    providers: { IdFornitore: number; SpeedLimit: number }[],
+    tipoProdotto: number,
+    tipoServizio: string,
+  ): Promise<TwtApiResponse<any>> {
+    try {
+      this.logger.debug(
+        `Getting listino for tipoProdotto: ${tipoProdotto}, tipoServizio: ${tipoServizio}, providers: ${JSON.stringify(providers)}`,
+      );
+
+      const url = `${this.baseUrl}/XdslBilling/GetListino`;
+
+      // Costruiamo i parametri per l'array fornitori
+      const params: any = {
+        levelIds: 1, // Obbligatorio come da documentazione
+        tipoProdotto,
+        tipoServizio,
+      };
+
+      // Aggiungiamo i fornitori come array di oggetti
+      providers.forEach((provider, index) => {
+        params[`fornitori[${index}][IdFornitore]`] = provider.IdFornitore;
+        params[`fornitori[${index}][SpeedLimit]`] = provider.SpeedLimit;
+      });
+
+      const response = await firstValueFrom(
+        this.httpService.get<TwtApiResponse<any>>(url, {
+          params,
+          headers: this.getAuthHeaders(),
+        }),
+      );
+
+      this.logger.debug(
+        `Received ${response.data.Body?.Products?.length || 0} products from GetListino`,
+      );
+
+      return response.data;
+    } catch (error) {
+      this.handleError(error as AxiosError, 'getListino');
     }
   }
 

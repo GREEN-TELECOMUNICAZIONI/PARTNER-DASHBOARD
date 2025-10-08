@@ -74,6 +74,7 @@ export interface AvailabilityReport {
   ServiceId: number;
   CoverageId: number;
   MaxSpeed: string;
+  MaxSpeedAvailableForNga?: number;
   Distance: number;
   ServiceDescription: string;
   ServiceName: string;
@@ -92,6 +93,8 @@ export interface AvailabilityReport {
   ConnectionTypeId: number;
   ConnectionElementName: string;
   ConnectionElementDetail: string;
+  ConnectionClli?: string;
+  Planned?: any;
   Selectable: boolean;
 }
 
@@ -103,4 +106,79 @@ export interface CoverageServicesBody {
   FastwebNotAvailable: boolean;
   NotAvailableProviders: any[];
   AvailabilityReports: AvailabilityReport[];
+}
+
+/**
+ * Interfaccia per un'opzione/profilo di velocità
+ */
+export interface ListinoOption {
+  IDCharge: number;
+  IDProdotto: number;
+  IDOpzione: number;
+  Attivazione: number;
+  Canone: number;
+  Variazione: number;
+  Migrazione: number;
+  Ricarica: number;
+  Cessazione: number;
+  IDRicorrenza: number;
+  Priorita: number;
+  Descrizione: string;
+  Tipologia: number;
+  TipoProdotto: number;
+  Solare: boolean;
+  Quantita: number;
+  Valore: number;
+  TipologiaAcquisto: number;
+  OrderBillingCode: number;
+  IdFornitore: number;
+  Mcrdown?: string;
+  Mcrup?: string;
+  Pcrup?: number;
+  Pcrdown?: number;
+}
+
+/**
+ * Interfaccia per un prodotto nel listino
+ */
+export interface ListinoProduct {
+  IDCharge: number;
+  IDProdotto: number;
+  Tipo: string;
+  Attivazione: number;
+  Canone: number;
+  Variazione: number;
+  Setup: number;
+  Migrazione: number;
+  Ricarica: number;
+  Cessazione: number;
+  Priorita: number;
+  IDRicorrenza: number;
+  Descrizione: string;
+  KitDiConsegna: boolean;
+  Solare: boolean;
+  Quantita: number;
+  TipoProdotto: number;
+  TipoServizio: string;
+  IdFornitore: number;
+  BandaDedicata: boolean;
+  Opzioni: ListinoOption[];
+  IsHdsl?: boolean;
+}
+
+/**
+ * Interfaccia per il body della risposta GetListino
+ */
+export interface ListinoBody {
+  idLivello: number;
+  idCharge: number;
+  Products: ListinoProduct[];
+}
+
+/**
+ * Interfaccia per il filtro fornitore di GetListino
+ */
+export interface ListinoProviderFilter {
+  IdFornitore: number;
+  SpeedLimit: number;
 }
