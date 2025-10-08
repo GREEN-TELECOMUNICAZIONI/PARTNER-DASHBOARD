@@ -1,0 +1,55 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Node modules (handled in each service)
+**/node_modules
+**/npm-debug.log*
+
+# Build outputs
+**/dist
+**/build
+**/.vite
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment files (use docker-compose env instead)
+**/.env
+**/.env*.local
+
+# Documentation
+*.md
+docs
+documentazione
+.kiro
+
+# Docker files (don't need to copy into build context)
+.dockerignore
+**/Dockerfile*
+**/docker-compose*.yml
+
+# Logs
+logs
+*.log
+**/logs
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Testing
+**/coverage
+**/__tests__
+**/*.spec.ts
+**/*.test.ts
+
+# CI/CD
+.github
+.gitlab-ci.yml
