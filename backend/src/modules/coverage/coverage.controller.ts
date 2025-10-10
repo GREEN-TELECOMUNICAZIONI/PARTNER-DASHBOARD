@@ -23,6 +23,8 @@ export class CoverageController {
   private readonly includeVariants: string[];
   private readonly excludeVariants: string[];
   private readonly excludeProfilePriorities: number[];
+  private readonly profileDescriptionPrefixes: string[];
+  private readonly excludeProfileKeywords: string[];
 
   constructor(
     private readonly twtService: TwtService,
@@ -58,6 +60,18 @@ export class CoverageController {
       ? excludePrioritiesString.split(',').map(priority => parseInt(priority.trim(), 10)).filter(p => !isNaN(p))
       : [];
 
+    // Parse profile description prefixes from environment variable
+    const prefixesString = this.configService.get<string>('PROFILE_DESCRIPTION_PREFIX', '');
+    this.profileDescriptionPrefixes = prefixesString
+      ? prefixesString.split(',').map(prefix => prefix.trim())
+      : [];
+
+    // Parse exclude profile keywords from environment variable
+    const excludeKeywordsString = this.configService.get<string>('EXCLUDE_PROFILES_BY_KEYWORD', '');
+    this.excludeProfileKeywords = excludeKeywordsString
+      ? excludeKeywordsString.split(',').map(keyword => keyword.trim())
+      : [];
+
     // Log active filters
     if (this.providerFilter.length > 0) {
       this.logger.log(`Provider filter active: ${this.providerFilter.join(', ')}`);
@@ -87,6 +101,18 @@ export class CoverageController {
       this.logger.log(`Excluding profiles with priority: ${this.excludeProfilePriorities.join(', ')}`);
     } else {
       this.logger.log('No profile priority exclusions');
+    }
+
+    if (this.profileDescriptionPrefixes.length > 0) {
+      this.logger.log(`Filtering profiles by description prefix: ${this.profileDescriptionPrefixes.join(', ')}`);
+    } else {
+      this.logger.log('No profile description prefix filter - showing all profiles');
+    }
+
+    if (this.excludeProfileKeywords.length > 0) {
+      this.logger.log(`Excluding profiles with keywords: ${this.excludeProfileKeywords.join(', ')}`);
+    } else {
+      this.logger.log('No profile keyword exclusions');
     }
   }
 
@@ -331,6 +357,10 @@ export class CoverageController {
       `Filtered services: ${availableServices.length} out of ${response.Body?.AvailabilityReports?.length || 0} total services`
     );
 
+    // Raggruppa servizi per BsRsTipoProdotto+BsRsTipoServizio+Provider per ottimizzare chiamate GetListino
+    // Servizi con stessi parametri riceveranno gli stessi profili dall'API
+    const listinoCache: Map<string, any[]> = new Map();
+
     // Per ogni servizio disponibile, ottieni i profili dal listino
     const servicesWithProfiles = await Promise.all(
       availableServices.map(async (service) => {
@@ -353,45 +383,116 @@ export class CoverageController {
 
           // Chiama GetListino solo se ci sono fornitori e i dati necessari
           if (providersForListino.length > 0 && service.BsRsTipoProdotto && service.BsRsTipoServizio) {
-            this.logger.debug(
-              `Fetching profiles for service ${service.ServiceName} (ServiceId: ${service.ServiceId})`
-            );
+            // Crea chiave di cache basata su parametri GetListino
+            const cacheKey = `${service.BsRsTipoProdotto}_${service.BsRsTipoServizio}_${providersForListino.map(p => `${p.IdFornitore}_${p.SpeedLimit}`).join('_')}`;
 
-            const listinoResponse = await this.twtService.getListino(
-              providersForListino,
-              service.BsRsTipoProdotto,
-              service.BsRsTipoServizio,
-            );
+            // Verifica se abbiamo già fatto questa chiamata GetListino
+            if (listinoCache.has(cacheKey)) {
+              this.logger.log(
+                `Using cached profiles for service "${service.ServiceName}" (ServiceId: ${service.ServiceId}) - same BsRsTipoProdotto/BsRsTipoServizio as previous service`
+              );
+              profiles = listinoCache.get(cacheKey) || [];
+            } else {
+              this.logger.log(
+                `Fetching profiles for service "${service.ServiceName}" (ServiceId: ${service.ServiceId}) - BsRsTipoProdotto: ${service.BsRsTipoProdotto}, BsRsTipoServizio: ${service.BsRsTipoServizio}, Providers: [${providersForListino.map(p => p.IdFornitore).join(', ')}]`
+              );
 
-            // Estrai i profili dai prodotti
-            if (listinoResponse.Success && listinoResponse.Body?.Products) {
-              listinoResponse.Body.Products.forEach(product => {
-                // Ogni opzione rappresenta un profilo di velocità
-                product.Opzioni?.forEach(option => {
+              const listinoResponse = await this.twtService.getListino(
+                providersForListino,
+                service.BsRsTipoProdotto,
+                service.BsRsTipoServizio,
+              );
+
+              // Estrai i profili dai prodotti
+              if (listinoResponse.Success && listinoResponse.Body?.Products) {
+                listinoResponse.Body.Products.forEach(product => {
+                  // Ogni opzione rappresenta un profilo di velocità
+                  product.Opzioni?.forEach(option => {
                   // Skip profiles with excluded priorities
                   if (this.excludeProfilePriorities.length > 0 &&
                       this.excludeProfilePriorities.includes(option.Priorita)) {
                     return; // Skip this profile
                   }
 
-                  profiles.push({
-                    id: option.IDOpzione.toString(),
-                    productId: product.IDProdotto.toString(),
-                    description: option.Descrizione,
-                    downloadSpeed: option.Pcrdown ? Math.round(option.Pcrdown / 1024) : 0, // Converti da Kbps a Mbps
-                    uploadSpeed: option.Pcrup ? Math.round(option.Pcrup / 1024) : 0,
-                    providerId: product.IdFornitore,
-                    providerName: this.getProviderName(product.IdFornitore),
-                    activationCost: option.Attivazione,
-                    monthlyCost: option.Canone,
-                    priority: option.Priorita,
+                  // Filter profiles by description prefix (if configured)
+                  if (this.profileDescriptionPrefixes.length > 0) {
+                    const matchesPrefix = this.profileDescriptionPrefixes.some(prefix =>
+                      option.Descrizione?.startsWith(prefix)
+                    );
+                    if (!matchesPrefix) {
+                      return; // Skip this profile
+                    }
+                  }
+
+                  // Exclude profiles by keywords in description
+                  if (this.excludeProfileKeywords.length > 0) {
+                    const containsExcludedKeyword = this.excludeProfileKeywords.some(keyword =>
+                      option.Descrizione?.includes(keyword)
+                    );
+                    if (containsExcludedKeyword) {
+                      return; // Skip this profile
+                    }
+                  }
+
+                    profiles.push({
+                      id: option.IDOpzione.toString(),
+                      productId: product.IDProdotto.toString(),
+                      description: option.Descrizione,
+                      downloadSpeed: option.Pcrdown ? Math.round(option.Pcrdown / 1024) : 0, // Converti da Kbps a Mbps
+                      uploadSpeed: option.Pcrup ? Math.round(option.Pcrup / 1024) : 0,
+                      providerId: product.IdFornitore,
+                      providerName: this.getProviderName(product.IdFornitore),
+                      activationCost: option.Attivazione,
+                      monthlyCost: option.Canone,
+                      priority: option.Priorita,
+                    });
                   });
                 });
-              });
 
-              this.logger.log(
-                `Found ${profiles.length} profiles for service ${service.ServiceName}`
-              );
+                // Filtra profili in base alla variante del servizio
+                // EVDSL = 200M (solo profili >= 200 Mbps)
+                // FTTCab normale = solo profili 30 Mb e 50 Mb
+                const isEVDSL = service.ServiceName.toUpperCase().includes('EVDSL');
+                const isFTTCab = service.ServiceName.toUpperCase().includes('FTTCAB') && !isEVDSL;
+
+                if (isEVDSL || isFTTCab) {
+                  const beforeFilter = profiles.length;
+
+                  profiles = profiles.filter(profile => {
+                    // Estrai la velocità dalla descrizione del profilo
+                    // Es: "TWT_TI FTTCab 200 Mb/20 Mb" -> 200
+                    const speedMatch = profile.description.match(/(\d+)\s*(?:Gb|Mb)/i);
+                    if (!speedMatch) return true; // Mantieni profili senza velocità riconoscibile
+
+                    let profileSpeed = parseInt(speedMatch[1]);
+                    // Se la velocità è in Gb, converti in Mb
+                    if (speedMatch[0].toLowerCase().includes('gb')) {
+                      profileSpeed *= 1000;
+                    }
+
+                    // EVDSL: mostra SOLO profili >= 200 Mbps
+                    // FTTCab normale: mostra SOLO profili 30 Mb e 50 Mb
+                    if (isEVDSL) {
+                      return profileSpeed >= 200;
+                    } else {
+                      return profileSpeed === 30 || profileSpeed === 50;
+                    }
+                  });
+
+                  if (beforeFilter !== profiles.length) {
+                    this.logger.log(
+                      `Filtered profiles for ${service.ServiceName} (${isEVDSL ? 'EVDSL >= 200M' : 'FTTCab 30/50M'}): ${profiles.length}/${beforeFilter} profiles shown`
+                    );
+                  }
+                }
+
+                this.logger.log(
+                  `Found ${profiles.length} profiles for service ${service.ServiceName}`
+                );
+
+                // Salva nella cache per servizi futuri con stessi parametri
+                listinoCache.set(cacheKey, profiles);
+              }
             }
           }
         } catch (error) {
@@ -506,6 +607,32 @@ export class CoverageController {
         coordinates: null,
       };
     }
+  }
+
+  /**
+   * GET /api/coverage/config
+   * Restituisce la configurazione dell'interfaccia utente
+   */
+  @Get('config')
+  @ApiOperation({
+    summary: 'UI Configuration',
+    description: 'Restituisce la configurazione per l\'interfaccia utente',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Configurazione UI',
+  })
+  getConfig() {
+    const columnsString = this.configService.get<string>('PROFILE_TABLE_COLUMNS', 'all');
+    const columns = columnsString === 'all' || !columnsString
+      ? ['description', 'speed', 'provider', 'monthlyCost', 'activationCost']
+      : columnsString.split(',').map(col => col.trim());
+
+    return {
+      profileTable: {
+        visibleColumns: columns,
+      },
+    };
   }
 
   /**

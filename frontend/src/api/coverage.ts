@@ -77,4 +77,10 @@ export const coverageApi = {
       return null;
     }
   },
+
+  // Get UI configuration
+  getConfig: async (): Promise<{ profileTable: { visibleColumns: string[] } }> => {
+    const response = await apiClient.get('/coverage/config');
+    return response.data || { profileTable: { visibleColumns: ['description', 'speed', 'provider', 'monthlyCost', 'activationCost'] } };
+  },
 };

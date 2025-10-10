@@ -69,3 +69,13 @@ export const useServices = (
     refetchOnReconnect: false,
   });
 };
+
+export const useConfig = () => {
+  return useQuery({
+    queryKey: ['config'],
+    queryFn: () => coverageApi.getConfig(),
+    staleTime: Infinity, // Configuration rarely changes
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+  });
+};
