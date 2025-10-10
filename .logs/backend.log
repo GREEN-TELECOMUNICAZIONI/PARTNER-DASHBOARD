@@ -2,101 +2,47 @@
 > twt-partner-dashboard-backend@1.0.0 start:dev
 > nest start --watch
 
-[2J[3J[H[[90m3:57:02 PM[0m] Starting compilation in watch mode...
+[2J[3J[H[[90m6:31:44 PM[0m] Starting compilation in watch mode...
 
-[[90m3:57:04 PM[0m] Found 0 errors. Watching for file changes.
+[[90m6:31:46 PM[0m] Found 0 errors. Watching for file changes.
 
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContractsModule dependencies initialized[39m[38;5;3m +6ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[TwtService] [39m[32mTWT Service initialized with base URL: https://reseller.twt.it/api/xdsl[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[TwtService] [39m[32mUsing Basic Auth with username: GREENTEL_PAVONE[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTwtModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mProvider filter active: 10[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mTechnology filter active: FTTC, FTTH[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mNo variant inclusion filter - all variants allowed[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mExcluding variants: Lite[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mNo profile priority exclusions[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltering profiles by description prefix: TWT_TI[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mExcluding profiles with keywords: Lite[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoverageModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mCORS enabled for frontend[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mGlobal validation pipe configured[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mGlobal exception filters configured[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mLogging interceptor enabled (development mode)[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSwagger documentation available at /api/docs[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +1ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoverageController {/api/coverage}:[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/cities, GET} route[39m[38;5;3m +1ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/streets, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/civics, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/headers, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/services, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/geocode, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/config, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/health, GET} route[39m[38;5;3m +1ms[39m
-[32m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +0ms[39m
-[31m[Nest] 87268  - [39m10/10/2025, 3:57:04 PM [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3000[39m[38;5;3m +2ms[39m
-Error starting application: Error: listen EADDRINUSE: address already in use :::3000
-    at Server.setupListenHandle [as _listen2] (node:net:1908:16)
-    at listenInCluster (node:net:1965:12)
-    at Server.listen (node:net:2067:7)
-    at ExpressAdapter.listen (/Users/mkou/GREEN-PARTNER-DASHBOARD/PARTNER-DASHBOARD/backend/node_modules/@nestjs/platform-express/adapters/express-adapter.js:127:32)
-    at /Users/mkou/GREEN-PARTNER-DASHBOARD/PARTNER-DASHBOARD/backend/node_modules/@nestjs/core/nest-application.js:188:30
-    at new Promise (<anonymous>)
-    at NestApplication.listen (/Users/mkou/GREEN-PARTNER-DASHBOARD/PARTNER-DASHBOARD/backend/node_modules/@nestjs/core/nest-application.js:178:16)
-    at async bootstrap (/Users/mkou/GREEN-PARTNER-DASHBOARD/PARTNER-DASHBOARD/backend/src/main.ts:92:3) {
-  code: 'EADDRINUSE',
-  errno: -48,
-  syscall: 'listen',
-  address: '::',
-  port: 3000
-}
-[2J[3J[H[[90m4:01:08 PM[0m] File change detected. Starting incremental compilation...
-
-[[90m4:01:08 PM[0m] Found 0 errors. Watching for file changes.
-
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContractsModule dependencies initialized[39m[38;5;3m +6ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[TwtService] [39m[32mTWT Service initialized with base URL: https://reseller.twt.it/api/xdsl[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[TwtService] [39m[32mUsing Basic Auth with username: GREENTEL_PAVONE[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTwtModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mProvider filter active: 10[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mTechnology filter active: FTTC, FTTH[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mNo variant inclusion filter - all variants allowed[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mExcluding variants: Lite[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mNo profile priority exclusions[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltering profiles by description prefix: TWT_TI[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mExcluding profiles with keywords: Lite[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoverageModule dependencies initialized[39m[38;5;3m +1ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mCORS enabled for frontend[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mGlobal validation pipe configured[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mGlobal exception filters configured[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mLogging interceptor enabled (development mode)[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSwagger documentation available at /api/docs[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +1ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoverageController {/api/coverage}:[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/cities, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/streets, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/civics, GET} route[39m[38;5;3m +1ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/headers, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/services, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/geocode, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/config, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/health, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +1ms[39m
-[31m[Nest] 87516  - [39m10/10/2025, 4:01:09 PM [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3000[39m[38;5;3m +2ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContractsModule dependencies initialized[39m[38;5;3m +6ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[TwtService] [39m[32mTWT Service initialized with base URL: https://reseller.twt.it/api/xdsl[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[TwtService] [39m[32mUsing Basic Auth with username: GREENTEL_PAVONE[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mProvider filter active: 10[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mTechnology filter active: FTTC, FTTH[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mNo variant inclusion filter - all variants allowed[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mExcluding variants: Lite[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mNo profile priority exclusions[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltering profiles by description prefix: TWT_TI[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mExcluding profiles with keywords: Lite[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mRetail price markup active: +5€[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoverageModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mCORS enabled for frontend[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mGlobal validation pipe configured[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mGlobal exception filters configured[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mLogging interceptor enabled (development mode)[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSwagger documentation available at /api/docs[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoverageController {/api/coverage}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/cities, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/streets, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/civics, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/headers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/services, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/geocode, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/config, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/health, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +1ms[39m
+[31m[Nest] 4023  - [39m10/10/2025, 6:31:46 PM [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3000[39m[38;5;3m +1ms[39m
 Error starting application: Error: listen EADDRINUSE: address already in use :::3000
     at Server.setupListenHandle [as _listen2] (node:net:1908:16)
     at listenInCluster (node:net:1965:12)

@@ -25,6 +25,7 @@ export class CoverageController {
   private readonly excludeProfilePriorities: number[];
   private readonly profileDescriptionPrefixes: string[];
   private readonly excludeProfileKeywords: string[];
+  private readonly retailPriceMarkup: number;
 
   constructor(
     private readonly twtService: TwtService,
@@ -113,6 +114,15 @@ export class CoverageController {
       this.logger.log(`Excluding profiles with keywords: ${this.excludeProfileKeywords.join(', ')}`);
     } else {
       this.logger.log('No profile keyword exclusions');
+    }
+
+    // Parse retail price markup from environment variable
+    const markupString = this.configService.get<string>('RETAIL_PRICE_MARKUP', '0');
+    this.retailPriceMarkup = parseFloat(markupString) || 0;
+    if (this.retailPriceMarkup > 0) {
+      this.logger.log(`Retail price markup active: +${this.retailPriceMarkup}€`);
+    } else {
+      this.logger.log('No retail price markup - showing wholesale prices');
     }
   }
 
@@ -443,15 +453,15 @@ export class CoverageController {
                       providerId: product.IdFornitore,
                       providerName: this.getProviderName(product.IdFornitore),
                       activationCost: option.Attivazione,
-                      monthlyCost: option.Canone,
+                      monthlyCost: Number(option.Canone) + this.retailPriceMarkup,
                       priority: option.Priorita,
                     });
                   });
                 });
 
                 // Filtra profili in base alla variante del servizio
-                // EVDSL = 200M (solo profili >= 200 Mbps)
-                // FTTCab normale = solo profili 30 Mb e 50 Mb
+                // EVDSL = solo profili >= 200 Mbps
+                // FTTCab normale = tutti profili ECCETTO >= 200 Mbps (quindi 10, 30, 50, 100 Mb)
                 const isEVDSL = service.ServiceName.toUpperCase().includes('EVDSL');
                 const isFTTCab = service.ServiceName.toUpperCase().includes('FTTCAB') && !isEVDSL;
 
@@ -471,17 +481,62 @@ export class CoverageController {
                     }
 
                     // EVDSL: mostra SOLO profili >= 200 Mbps
-                    // FTTCab normale: mostra SOLO profili 30 Mb e 50 Mb
+                    // FTTCab normale: mostra tutti profili < 200 Mbps
                     if (isEVDSL) {
                       return profileSpeed >= 200;
                     } else {
-                      return profileSpeed === 30 || profileSpeed === 50;
+                      return profileSpeed < 200;
                     }
                   });
 
                   if (beforeFilter !== profiles.length) {
                     this.logger.log(
-                      `Filtered profiles for ${service.ServiceName} (${isEVDSL ? 'EVDSL >= 200M' : 'FTTCab 30/50M'}): ${profiles.length}/${beforeFilter} profiles shown`
+                      `Filtered profiles for ${service.ServiceName} (${isEVDSL ? 'EVDSL >= 200M' : 'FTTCab < 200M'}): ${profiles.length}/${beforeFilter} profiles shown`
+                    );
+                  }
+                }
+
+                // Per FTTCab, mostra solo 1 profilo per velocità
+                // Preferisce profili con priority < 9999, ma accetta 9999 se è l'unica opzione
+                if (isFTTCab && profiles.length > 0) {
+                  const beforeDedup = profiles.length;
+                  const profilesBySpeed = new Map<number, typeof profiles[0]>();
+
+                  profiles.forEach(profile => {
+                    const speedMatch = profile.description.match(/(\d+)\s*(?:Gb|Mb)/i);
+                    if (speedMatch) {
+                      let speed = parseInt(speedMatch[1]);
+                      if (speedMatch[0].toLowerCase().includes('gb')) {
+                        speed *= 1000;
+                      }
+
+                      const existing = profilesBySpeed.get(speed);
+
+                      if (!existing) {
+                        // Nessun profilo per questa velocità, aggiungi questo
+                        profilesBySpeed.set(speed, profile);
+                      } else {
+                        // Esiste già un profilo per questa velocità
+                        const existingIs9999 = existing.priority >= 9999;
+                        const currentIs9999 = profile.priority >= 9999;
+
+                        // Se l'esistente è 9999 e il corrente no, sostituisci
+                        if (existingIs9999 && !currentIs9999) {
+                          profilesBySpeed.set(speed, profile);
+                        }
+                        // Se entrambi non sono 9999, o entrambi sono 9999, prendi quello con priority più bassa
+                        else if (existingIs9999 === currentIs9999 && profile.priority < existing.priority) {
+                          profilesBySpeed.set(speed, profile);
+                        }
+                      }
+                    }
+                  });
+
+                  profiles = Array.from(profilesBySpeed.values());
+
+                  if (beforeDedup !== profiles.length) {
+                    this.logger.log(
+                      `Deduplicated FTTCab profiles by speed: ${profiles.length}/${beforeDedup} profiles shown (1 per speed, prefer priority < 9999)`
                     );
                   }
                 }

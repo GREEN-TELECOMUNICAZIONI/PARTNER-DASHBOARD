@@ -7,7 +7,7 @@ import {
   Alert,
   Paper,
 } from '@mui/material';
-import { Search as SearchIcon } from '@mui/icons-material';
+import { Search as SearchIcon, BugReport as BugReportIcon } from '@mui/icons-material';
 import { AddressAutocomplete } from '../components/coverage/AddressAutocomplete';
 import { MapView } from '../components/coverage/MapView';
 import { CoverageResults } from '../components/coverage/CoverageResults';
@@ -25,6 +25,9 @@ export const VerificaCopertura: React.FC = () => {
     mainEgon: string;
     streetNumber: string;
   } | null>(null);
+
+  // Debug mode flag from env
+  const isDebugMode = import.meta.env.VITE_DEBUG === 'true';
 
   // Query for headers (triggered manually)
   const {
@@ -97,18 +100,58 @@ export const VerificaCopertura: React.FC = () => {
     }
   };
 
+  // Debug function to test with TORINO CORSO CANONICO GIUSEPPE ALLAMANO 17
+  const handleDebugTest = async () => {
+    const debugAddress: SelectedAddress = {
+      cityName: 'TORINO',
+      province: 'TORINO',
+      streetName: 'CORSO CANONICO GIUSEPPE ALLAMANO',
+      civic: '17',
+      street: 'CORSO',
+      address: 'CANONICO GIUSEPPE ALLAMANO',
+      cityEgon: '38000001274',
+      addressEgon: '38000069719',
+      coordinates: [45.0703, 7.6869], // Turin coordinates
+    };
+
+    await handleAddressSelected(debugAddress);
+    // Wait a bit for state to update
+    setTimeout(() => {
+      handleCheckCoverage();
+    }, 100);
+  };
+
   const isLoading = headersLoading || servicesLoading;
   const error = headersError || servicesError;
 
   return (
     <Container maxWidth="lg">
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Verifica Copertura
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Seleziona un indirizzo per verificare la disponibilità dei servizi TWT
-        </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Box>
+            <Typography variant="h4" component="h1" gutterBottom>
+              Verifica Copertura
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              Seleziona un indirizzo per verificare la disponibilità dei servizi TWT
+            </Typography>
+          </Box>
+
+          {/* Debug Button - Only visible in debug mode */}
+          {isDebugMode && (
+            <Button
+              variant="outlined"
+              color="warning"
+              size="small"
+              startIcon={<BugReportIcon />}
+              onClick={handleDebugTest}
+              disabled={isLoading}
+              sx={{ ml: 2 }}
+            >
+              Test Torino
+            </Button>
+          )}
+        </Box>
       </Box>
 
       {/* Section 1: Address Autocomplete */}
