@@ -135,7 +135,7 @@ services:
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 3600 # Controlla ogni ora
+    command: --interval 200 # Controlla ogni ora
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
