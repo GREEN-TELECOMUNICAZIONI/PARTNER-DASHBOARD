@@ -51,8 +51,8 @@ logs
 Thumbs.db
 
 # Misc
-.dockerignore
-Dockerfile
+# NOTE: Removed .dockerignore and Dockerfile from ignore list
+# They need to be readable during Docker build process!
 docker-compose*.yml
 
 # Vite cache
