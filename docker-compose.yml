@@ -13,6 +13,7 @@ services:
     image: ghcr.io/${GITHUB_USERNAME}/backend:latest
     container_name: backend
     restart: unless-stopped
+    command: ["tail", "-f", "/dev/null"]
     environment:
       NODE_ENV: production
       PORT: 3000
@@ -24,12 +25,6 @@ services:
       - backend-logs:/app/logs
     networks:
       - twt-network
-    healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -44,9 +39,6 @@ services:
       # Esponiamo la porta al solo host, non pubblicamente.
       # Nginx si connetterà a localhost:8080
       - "127.0.0.1:8080:80"
-    depends_on:
-      backend:
-        condition: service_healthy
     networks:
       - twt-network
     healthcheck:
