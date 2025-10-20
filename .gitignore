@@ -37,7 +37,7 @@ jspm_packages/
 dist/
 dist-ssr/
 build/
-coverage/
+# NOTE: NOT ignoring 'coverage' to allow src/components/coverage directory
 *.local
 
 # Cache directories
@@ -73,7 +73,9 @@ Thumbs.db
 docker-compose.override.yml
 
 # Test coverage
-coverage/
+# NOTE: Using specific paths to not block src/components/coverage
+**/coverage/
+!**/src/components/coverage/
 *.lcov
 .nyc_output/
 
