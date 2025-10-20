@@ -89,8 +89,8 @@ async function bootstrap() {
   logger.log('Swagger documentation available at /api/docs');
 
   // Avvio del server
-  await app.listen(port);
-  logger.log(`Application is running on: http://localhost:${port}`);
+  await app.listen(port, '0.0.0.0');
+  logger.log(`Application is running on: http://0.0.0.0:${port}`);
   logger.log(`Environment: ${nodeEnv}`);
   logger.log(`Swagger UI: http://localhost:${port}/api/docs`);
 }
