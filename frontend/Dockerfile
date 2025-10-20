@@ -18,6 +18,14 @@ RUN npm ci
 # Copy source code and configuration
 COPY . .
 
+# Debug: verify what was copied
+RUN echo "=== VERIFICA FILE COPIATI ===" && \
+    echo "Directory components:" && \
+    ls -la src/components/ && \
+    echo "" && \
+    echo "Directory coverage (se esiste):" && \
+    ls -la src/components/coverage/ 2>/dev/null || echo "❌ DIRECTORY COVERAGE NON TROVATA!" && \
+    echo ""
 
 # Build argument for API URL (can be overridden at build time)
 ARG VITE_API_URL=http://localhost:3000
