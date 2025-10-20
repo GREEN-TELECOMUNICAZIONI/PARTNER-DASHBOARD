@@ -40,7 +40,7 @@ jobs:
       - name: Build and Push Frontend
         run: |
           docker build --no-cache -t ${{ env.IMAGE_PREFIX }}/frontend:latest \
-            --build-arg VITE_API_URL=http://green.partners.ws-services.eu/api \
+            --build-arg VITE_API_URL=https://green.partners.ws-services.eu/api \
             ./frontend
           docker push ${{ env.IMAGE_PREFIX }}/frontend:latest
 
