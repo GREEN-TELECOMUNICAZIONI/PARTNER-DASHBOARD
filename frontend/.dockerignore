@@ -6,7 +6,9 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Testing
-coverage
+# Ignore test coverage directory but NOT src/components/coverage
+**/coverage/
+!src/components/coverage
 *.spec.ts
 *.test.ts
 *.spec.tsx

@@ -18,19 +18,6 @@ RUN npm ci
 # Copy source code and configuration
 COPY . .
 
-# Debug: verificare struttura file
-RUN echo "=== Verifica struttura file ===" && \
-    ls -la && \
-    echo "=== Verifica tsconfig ===" && \
-    cat tsconfig.app.json && \
-    echo "=== File in src ===" && \
-    ls -la src/ && \
-    echo "=== File in src/components/coverage ===" && \
-    ls -la src/components/coverage/ || echo "Directory non trovata" && \
-    echo "=== File in src/pages ===" && \
-    ls -la src/pages/ || echo "Directory non trovata" && \
-    echo "=== Contenuto VerificaCopertura.tsx (prime 20 righe) ===" && \
-    head -20 src/pages/VerificaCopertura.tsx || echo "File non trovato"
 
 # Build argument for API URL (can be overridden at build time)
 ARG VITE_API_URL=http://localhost:3000
