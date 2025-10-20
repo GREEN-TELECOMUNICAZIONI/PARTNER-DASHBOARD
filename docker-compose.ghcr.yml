@@ -27,9 +27,9 @@ services:
   # ==========================================
   backend:
     # Immagine da GitHub Container Registry
-    # Formato: ghcr.io/<github-username>/twt-partner-backend:latest
-    image: ghcr.io/${GITHUB_USERNAME}/twt-partner-backend:latest
-    container_name: twt-partner-backend
+    # Formato: ghcr.io/<github-username>/backend:latest
+    image: ghcr.io/${GITHUB_USERNAME}/backend:latest
+    container_name: backend
     restart: unless-stopped
 
     ports:
@@ -94,9 +94,9 @@ services:
   # ==========================================
   frontend:
     # Immagine da GitHub Container Registry
-    # Formato: ghcr.io/<github-username>/twt-partner-frontend:latest
-    image: ghcr.io/${GITHUB_USERNAME}/twt-partner-frontend:latest
-    container_name: twt-partner-frontend
+    # Formato: ghcr.io/<github-username>/frontend:latest
+    image: ghcr.io/${GITHUB_USERNAME}/frontend:latest
+    container_name: frontend
     restart: unless-stopped
 
     ports:
@@ -131,7 +131,7 @@ services:
 # ==========================================
 networks:
   twt-network:
-    name: twt-partner-network
+    name: network
     driver: bridge
 
 # ==========================================
@@ -139,5 +139,5 @@ networks:
 # ==========================================
 volumes:
   backend-logs:
-    name: twt-partner-backend-logs
+    name: backend-logs
     driver: local
