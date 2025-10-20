@@ -103,6 +103,7 @@ export const VerificaCopertura: React.FC = () => {
   // Debug function to test with TORINO CORSO CANONICO GIUSEPPE ALLAMANO 17
   const handleDebugTest = async () => {
     const debugAddress: SelectedAddress = {
+      cityId: '5900', // Torino city ID
       cityName: 'TORINO',
       province: 'TORINO',
       streetName: 'CORSO CANONICO GIUSEPPE ALLAMANO',
@@ -110,7 +111,11 @@ export const VerificaCopertura: React.FC = () => {
       street: 'CORSO',
       address: 'CANONICO GIUSEPPE ALLAMANO',
       cityEgon: '38000001274',
+      streetId: '1043922', // Street ID for the address
+      addressId: '1043922', // Address ID
       addressEgon: '38000069719',
+      mainEgon: '', // Will be populated by handleAddressSelected
+      headersId: [], // Will be populated by handleAddressSelected
       coordinates: [45.0703, 7.6869], // Turin coordinates
     };
 
