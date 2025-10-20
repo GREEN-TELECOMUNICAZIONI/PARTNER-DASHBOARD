@@ -8,12 +8,12 @@ import {
   Paper,
 } from '@mui/material';
 import { Search as SearchIcon, BugReport as BugReportIcon } from '@mui/icons-material';
-import { AddressAutocomplete } from '../components/coverage/AddressAutocomplete.tsx';
-import { MapView } from '../components/coverage/MapView.tsx';
-import { CoverageResults } from '../components/coverage/CoverageResults.tsx';
-import { LoadingSpinner } from '../components/coverage/LoadingSpinner.tsx';
-import { useHeaders, useServices } from '../hooks/useCoverage.ts';
-import type { SelectedAddress } from '../types/api.ts';
+import { AddressAutocomplete } from '../components/coverage/AddressAutocomplete';
+import { MapView } from '../components/coverage/MapView';
+import { CoverageResults } from '../components/coverage/CoverageResults';
+import { LoadingSpinner } from '../components/coverage/LoadingSpinner';
+import { useHeaders, useServices } from '../hooks/useCoverage';
+import type { SelectedAddress } from '../types/api';
 
 export const VerificaCopertura: React.FC = () => {
   const [selectedAddress, setSelectedAddress] = useState<SelectedAddress | null>(null);
