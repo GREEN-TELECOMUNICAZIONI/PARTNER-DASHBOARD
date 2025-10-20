@@ -137,3 +137,31 @@
 [95m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 5 products from GetListino[39m
 [32m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 2 profiles for service FTTH[39m
 [32m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/services?headersId=403608508&headersId=403608512&cityEgon=38000002491&addressEgon=2258&mainEgon=380100007715713&streetNumber=38%2F1 - 5930ms[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:10 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/headers?city=TORINO&province=TORINO&address=CANONICO+GIUSEPPE+ALLAMANO&number=17&street=CORSO[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:10 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"city":"TORINO","province":"TORINO","address":"CANONICO GIUSEPPE ALLAMANO","number":"17","street":"CORSO"}}[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:10 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGetting headers for: CORSO CANONICO GIUSEPPE ALLAMANO 17, TORINO[39m
+[95m[Nest] 24311  - [39m10/20/2025, 11:40:10 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting headers for: CORSO CANONICO GIUSEPPE ALLAMANO 17, TORINO (TORINO)[39m
+[95m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 2 headers[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/headers?city=TORINO&province=TORINO&address=CANONICO+GIUSEPPE+ALLAMANO&number=17&street=CORSO - 742ms[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/services?headersId=403608508&headersId=403608512&cityEgon=38000001274&addressEgon=38000069719&mainEgon=380100007715713&streetNumber=17[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"headersId":["403608508","403608512"],"cityEgon":"38000001274","addressEgon":"38000069719","mainEgon":"380100007715713","streetNumber":"17"}}[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mChecking coverage for address with headers: 403608508,403608512[39m
+[95m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting coverage services for address: 38000069719, headers: 403608508,403608512[39m
+[95m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 11 services from TWT API[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered services: 3 out of 11 total services[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTCab" (ServiceId: 22) - BsRsTipoProdotto: 11, BsRsTipoServizio: R, Providers: [10][39m
+[95m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 11, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":200}][39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTH" (ServiceId: 21) - BsRsTipoProdotto: 10, BsRsTipoServizio: R, Providers: [10][39m
+[95m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 10, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":2500}][39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTCab EVDSL" (ServiceId: 23) - BsRsTipoProdotto: 11, BsRsTipoServizio: R, Providers: [10][39m
+[95m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 11, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":200}][39m
+[95m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 5 products from GetListino[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 2 profiles for service FTTH[39m
+[95m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 8 products from GetListino[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered profiles for FTTCab (FTTCab < 200M): 7/8 profiles shown[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mDeduplicated FTTCab profiles by speed: 4/7 profiles shown (1 per speed, prefer priority < 9999)[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 4 profiles for service FTTCab[39m
+[95m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 8 products from GetListino[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered profiles for FTTCab EVDSL (EVDSL >= 200M): 1/8 profiles shown[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 1 profiles for service FTTCab EVDSL[39m
+[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/services?headersId=403608508&headersId=403608512&cityEgon=38000001274&addressEgon=38000069719&mainEgon=380100007715713&streetNumber=17 - 2530ms[39m
