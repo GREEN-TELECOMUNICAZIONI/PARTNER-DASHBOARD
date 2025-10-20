@@ -1,0 +1,138 @@
+version: '3.8'
+
+# ============================================
+# TWT Partner Dashboard - Portainer Stack
+# ============================================
+#
+# Questo compose viene usato da Portainer via Git Repository
+# Le variabili d'ambiente vengono configurate in Portainer UI
+#
+# Setup in Portainer:
+# 1. Stacks → Add stack
+# 2. Build method: Repository
+# 3. Repository URL: https://github.com/<your-username>/PARTNER-DASHBOARD
+# 4. Repository reference: refs/heads/main
+# 5. Compose path: docker-compose.portainer.yml
+# 6. Environment variables: Configurare nella UI
+# ============================================
+
+services:
+  # ==========================================
+  # Backend Service (NestJS API)
+  # ==========================================
+  backend:
+    # IMPORTANTE: Sostituisci <your-dockerhub-username> con il tuo username Docker Hub
+    # Oppure configura DOCKER_USERNAME come environment variable in Portainer
+    image: ${DOCKER_USERNAME}/twt-partner-backend:latest
+    container_name: twt-partner-backend
+    restart: unless-stopped
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      # Application
+      NODE_ENV: production
+      PORT: 3000
+
+      # CORS - URL pubblico del frontend
+      CORS_ORIGIN: ${CORS_ORIGIN}
+
+      # TWT API Configuration
+      TWT_API_BASE_URL: https://reseller.twt.it/api/xdsl
+      TWT_API_USERNAME: ${TWT_API_USERNAME}
+      TWT_API_PASSWORD: ${TWT_API_PASSWORD}
+      TWT_API_TIMEOUT: ${TWT_API_TIMEOUT:-30000}
+      TWT_API_MAX_RETRIES: ${TWT_API_MAX_RETRIES:-3}
+
+      # Rate Limiting
+      RATE_LIMIT_TTL: ${RATE_LIMIT_TTL:-60}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-100}
+
+      # Provider Filters
+      TWT_PROVIDER_FILTER: ${TWT_PROVIDER_FILTER:-10}
+      TWT_TECHNOLOGY_FILTER: ${TWT_TECHNOLOGY_FILTER:-FTTC,FTTH}
+      TWT_INCLUDE_VARIANTS: ${TWT_INCLUDE_VARIANTS:-}
+      TWT_EXCLUDE_VARIANTS: ${TWT_EXCLUDE_VARIANTS:-Lite}
+
+      # Profile Filters
+      EXCLUDE_PROFILES_WITH_PRIORITY: ${EXCLUDE_PROFILES_WITH_PRIORITY:-9999}
+      PROFILE_DESCRIPTION_PREFIX: ${PROFILE_DESCRIPTION_PREFIX:-TWT_TI}
+      EXCLUDE_PROFILES_BY_KEYWORD: ${EXCLUDE_PROFILES_BY_KEYWORD:-}
+      PROFILE_TABLE_COLUMNS: ${PROFILE_TABLE_COLUMNS:-description}
+
+    volumes:
+      - backend-logs:/app/logs
+
+    networks:
+      - twt-network
+
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+    labels:
+      # Watchtower auto-update
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  # ==========================================
+  # Frontend Service (React + Nginx)
+  # ==========================================
+  frontend:
+    # IMPORTANTE: Sostituisci <your-dockerhub-username> con il tuo username Docker Hub
+    # Oppure configura DOCKER_USERNAME come environment variable in Portainer
+    image: ${DOCKER_USERNAME}/twt-partner-frontend:latest
+    container_name: twt-partner-frontend
+    restart: unless-stopped
+
+    ports:
+      - "80:80"
+
+    depends_on:
+      backend:
+        condition: service_healthy
+
+    networks:
+      - twt-network
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+    labels:
+      # Watchtower auto-update
+      - "com.centurylinklabs.watchtower.enable=true"
+
+# ==========================================
+# Networks
+# ==========================================
+networks:
+  twt-network:
+    name: twt-partner-network
+    driver: bridge
+
+# ==========================================
+# Volumes
+# ==========================================
+volumes:
+  backend-logs:
+    name: twt-partner-backend-logs
+    driver: local

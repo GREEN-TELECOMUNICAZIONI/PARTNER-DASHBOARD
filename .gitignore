@@ -9,6 +9,9 @@
 .env.development
 *.env
 !.env.example
+!.env.portainer.example
+!backend/.env.example
+!frontend/.env.example
 
 # Logs
 .logs/
