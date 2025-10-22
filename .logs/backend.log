@@ -2,166 +2,128 @@
 > twt-partner-dashboard-backend@1.0.0 start:dev
 > nest start --watch
 
-[2J[3J[H[[90m11:25:26 PM[0m] Starting compilation in watch mode...
+[2J[3J[H[[90m3:32:03 PM[0m] Starting compilation in watch mode...
 
-[[90m11:25:28 PM[0m] Found 0 errors. Watching for file changes.
+[[90m3:32:05 PM[0m] Found 0 errors. Watching for file changes.
 
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContractsModule dependencies initialized[39m[38;5;3m +5ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[TwtService] [39m[32mTWT Service initialized with base URL: https://reseller.twt.it/api/xdsl[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[TwtService] [39m[32mUsing Basic Auth with username: GREENTEL_PAVONE[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTwtModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mProvider filter active: 10[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mTechnology filter active: FTTC, FTTH[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mNo variant inclusion filter - all variants allowed[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mExcluding variants: Lite[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mNo profile priority exclusions[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltering profiles by description prefix: TWT_TI[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mExcluding profiles with keywords: Lite[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mRetail price markup active: +5€[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoverageModule dependencies initialized[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mCORS enabled for frontend[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mGlobal validation pipe configured[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mGlobal exception filters configured[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mLogging interceptor enabled (development mode)[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSwagger documentation available at /api/docs[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +1ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoverageController {/api/coverage}:[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/cities, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/streets, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/civics, GET} route[39m[38;5;3m +1ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/headers, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/services, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/geocode, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/config, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/health, GET} route[39m[38;5;3m +0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +1ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mApplication is running on: http://0.0.0.0:3000[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mEnvironment: development[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:28 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSwagger UI: http://localhost:3000/api/docs[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:38 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/cities?query=milano[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:38 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"query":"milano"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:38 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching cities with query: milano[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:38 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting cities with query: milano[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:39 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 1 cities[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:39 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/cities?query=milano - 956ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:40 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/cities?query=MILANO+(MILANO)[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:40 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"query":"MILANO (MILANO)"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:40 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching cities with query: MILANO (MILANO)[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:40 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting cities with query: MILANO (MILANO)[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:41 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 0 cities[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:41 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/cities?query=MILANO+(MILANO) - 598ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:42 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/streets?query=venini&cityId=99[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:42 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"query":"venini","cityId":"99"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:42 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching streets with query: venini, cityId: 99[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:42 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting streets with query: venini, cityId: 99[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:43 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 3 streets[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:43 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/streets?query=venini&cityId=99 - 1035ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:44 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/civics?addressId=248724[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:44 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"addressId":"248724"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:44 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching civics for addressId: 248724, query: all[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:44 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting civics for addressId: 248724, query: all[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:44 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/streets?query=VIA+GIULIO+E+CORRADO+VENINI&cityId=99[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:44 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"query":"VIA GIULIO E CORRADO VENINI","cityId":"99"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:44 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching streets with query: VIA GIULIO E CORRADO VENINI, cityId: 99[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:44 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting streets with query: VIA GIULIO E CORRADO VENINI, cityId: 99[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:45 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 107 civics[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:45 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/civics?addressId=248724 - 1097ms[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:45 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 0 streets[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:45 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/streets?query=VIA+GIULIO+E+CORRADO+VENINI&cityId=99 - 683ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:46 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/geocode?address=VIA+GIULIO+E+CORRADO+VENINI+38%2F1&city=MILANO&province=MILANO[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:46 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"address":"VIA GIULIO E CORRADO VENINI 38/1","city":"MILANO","province":"MILANO"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:46 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGeocoding: VIA GIULIO E CORRADO VENINI 38/1, MILANO, MILANO[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:47 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/geocode?address=VIA+GIULIO+E+CORRADO+VENINI+38%2F1&city=MILANO&province=MILANO - 286ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:47 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/headers?city=MILANO&province=MILANO&address=GIULIO+E+CORRADO+VENINI&number=38%2F1&street=VIA[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:47 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"city":"MILANO","province":"MILANO","address":"GIULIO E CORRADO VENINI","number":"38/1","street":"VIA"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:47 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGetting headers for: VIA GIULIO E CORRADO VENINI 38/1, MILANO[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:47 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting headers for: VIA GIULIO E CORRADO VENINI 38/1, MILANO (MILANO)[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:47 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 2 headers[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:47 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/headers?city=MILANO&province=MILANO&address=GIULIO+E+CORRADO+VENINI&number=38%2F1&street=VIA - 677ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:48 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/headers?city=MILANO&province=MILANO&address=GIULIO+E+CORRADO+VENINI&number=38%2F1&street=VIA[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:48 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"city":"MILANO","province":"MILANO","address":"GIULIO E CORRADO VENINI","number":"38/1","street":"VIA"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:48 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGetting headers for: VIA GIULIO E CORRADO VENINI 38/1, MILANO[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:48 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting headers for: VIA GIULIO E CORRADO VENINI 38/1, MILANO (MILANO)[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:49 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 2 headers[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:49 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/headers?city=MILANO&province=MILANO&address=GIULIO+E+CORRADO+VENINI&number=38%2F1&street=VIA - 814ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:49 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/services?headersId=399660575&headersId=399660577&cityEgon=38000002491&addressEgon=2258&mainEgon=380100004427887&streetNumber=38%2F1[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:49 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"headersId":["399660575","399660577"],"cityEgon":"38000002491","addressEgon":"2258","mainEgon":"380100004427887","streetNumber":"38/1"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:49 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mChecking coverage for address with headers: 399660575,399660577[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:49 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting coverage services for address: 2258, headers: 399660575,399660577[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:50 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 10 services from TWT API[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:50 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered services: 1 out of 10 total services[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:50 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTH" (ServiceId: 21) - BsRsTipoProdotto: 10, BsRsTipoServizio: R, Providers: [10][39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:50 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 10, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":2500}][39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:25:50 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 5 products from GetListino[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:50 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 2 profiles for service FTTH[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:50 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/services?headersId=399660575&headersId=399660577&cityEgon=38000002491&addressEgon=2258&mainEgon=380100004427887&streetNumber=38%2F1 - 1406ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:51 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/config[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:51 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:25:51 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/config - 0ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:00 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/geocode?address=CORSO+CANONICO+GIUSEPPE+ALLAMANO+17&city=TORINO&province=TORINO[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:00 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"address":"CORSO CANONICO GIUSEPPE ALLAMANO 17","city":"TORINO","province":"TORINO"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:00 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGeocoding: CORSO CANONICO GIUSEPPE ALLAMANO 17, TORINO, TORINO[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:00 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/geocode?address=CORSO+CANONICO+GIUSEPPE+ALLAMANO+17&city=TORINO&province=TORINO - 154ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:00 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/headers?city=TORINO&province=TORINO&address=CANONICO+GIUSEPPE+ALLAMANO&number=17&street=CORSO[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:00 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"city":"TORINO","province":"TORINO","address":"CANONICO GIUSEPPE ALLAMANO","number":"17","street":"CORSO"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:00 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGetting headers for: CORSO CANONICO GIUSEPPE ALLAMANO 17, TORINO[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:26:00 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting headers for: CORSO CANONICO GIUSEPPE ALLAMANO 17, TORINO (TORINO)[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:26:01 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 2 headers[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:01 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/headers?city=TORINO&province=TORINO&address=CANONICO+GIUSEPPE+ALLAMANO&number=17&street=CORSO - 836ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:01 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/services?headersId=403608508&headersId=403608512&cityEgon=38000002491&addressEgon=2258&mainEgon=380100007715713&streetNumber=38%2F1[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:01 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"headersId":["403608508","403608512"],"cityEgon":"38000002491","addressEgon":"2258","mainEgon":"380100007715713","streetNumber":"38/1"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:01 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mChecking coverage for address with headers: 403608508,403608512[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:26:01 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting coverage services for address: 2258, headers: 403608508,403608512[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:26:06 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 11 services from TWT API[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered services: 3 out of 11 total services[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTCab" (ServiceId: 22) - BsRsTipoProdotto: 11, BsRsTipoServizio: R, Providers: [10][39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:26:06 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 11, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":200}][39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTH" (ServiceId: 21) - BsRsTipoProdotto: 10, BsRsTipoServizio: R, Providers: [10][39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:26:06 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 10, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":2500}][39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTCab EVDSL" (ServiceId: 23) - BsRsTipoProdotto: 11, BsRsTipoServizio: R, Providers: [10][39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:26:06 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 11, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":200}][39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 8 products from GetListino[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered profiles for FTTCab (FTTCab < 200M): 7/8 profiles shown[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mDeduplicated FTTCab profiles by speed: 4/7 profiles shown (1 per speed, prefer priority < 9999)[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 4 profiles for service FTTCab[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 8 products from GetListino[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered profiles for FTTCab EVDSL (EVDSL >= 200M): 1/8 profiles shown[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 1 profiles for service FTTCab EVDSL[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 5 products from GetListino[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 2 profiles for service FTTH[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:26:07 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/services?headersId=403608508&headersId=403608512&cityEgon=38000002491&addressEgon=2258&mainEgon=380100007715713&streetNumber=38%2F1 - 5930ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:10 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/headers?city=TORINO&province=TORINO&address=CANONICO+GIUSEPPE+ALLAMANO&number=17&street=CORSO[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:10 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"city":"TORINO","province":"TORINO","address":"CANONICO GIUSEPPE ALLAMANO","number":"17","street":"CORSO"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:10 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGetting headers for: CORSO CANONICO GIUSEPPE ALLAMANO 17, TORINO[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:40:10 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting headers for: CORSO CANONICO GIUSEPPE ALLAMANO 17, TORINO (TORINO)[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 2 headers[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/headers?city=TORINO&province=TORINO&address=CANONICO+GIUSEPPE+ALLAMANO&number=17&street=CORSO - 742ms[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/services?headersId=403608508&headersId=403608512&cityEgon=38000001274&addressEgon=38000069719&mainEgon=380100007715713&streetNumber=17[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"headersId":["403608508","403608512"],"cityEgon":"38000001274","addressEgon":"38000069719","mainEgon":"380100007715713","streetNumber":"17"}}[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mChecking coverage for address with headers: 403608508,403608512[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:40:11 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting coverage services for address: 38000069719, headers: 403608508,403608512[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 11 services from TWT API[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered services: 3 out of 11 total services[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTCab" (ServiceId: 22) - BsRsTipoProdotto: 11, BsRsTipoServizio: R, Providers: [10][39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 11, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":200}][39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTH" (ServiceId: 21) - BsRsTipoProdotto: 10, BsRsTipoServizio: R, Providers: [10][39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 10, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":2500}][39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTCab EVDSL" (ServiceId: 23) - BsRsTipoProdotto: 11, BsRsTipoServizio: R, Providers: [10][39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:40:12 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 11, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":200}][39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 5 products from GetListino[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 2 profiles for service FTTH[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 8 products from GetListino[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered profiles for FTTCab (FTTCab < 200M): 7/8 profiles shown[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mDeduplicated FTTCab profiles by speed: 4/7 profiles shown (1 per speed, prefer priority < 9999)[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 4 profiles for service FTTCab[39m
-[95m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 8 products from GetListino[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered profiles for FTTCab EVDSL (EVDSL >= 200M): 1/8 profiles shown[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 1 profiles for service FTTCab EVDSL[39m
-[32m[Nest] 24311  - [39m10/20/2025, 11:40:13 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/services?headersId=403608508&headersId=403608512&cityEgon=38000001274&addressEgon=38000069719&mainEgon=380100007715713&streetNumber=17 - 2530ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContractsModule dependencies initialized[39m[38;5;3m +5ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHttpModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[TwtService] [39m[32mTWT Service initialized with base URL: https://reseller.twt.it/api/xdsl[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[TwtService] [39m[32mUsing Basic Auth with username: GREENTEL_PAVONE[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mProvider filter active: 10[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mTechnology filter active: FTTC, FTTH[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mNo variant inclusion filter - all variants allowed[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mExcluding variants: Lite[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mNo profile priority exclusions[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltering profiles by description prefix: TWT_TI[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mExcluding profiles with keywords: Lite[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mRetail price markup active: +5€[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoverageModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mCORS enabled for frontend[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mGlobal validation pipe configured[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mGlobal exception filters configured[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mLogging interceptor enabled (development mode)[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSwagger documentation available at /api/docs[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoverageController {/api/coverage}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/cities, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/streets, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/civics, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/headers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/services, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/geocode, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/config, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/coverage/health, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +0ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mApplication is running on: http://0.0.0.0:3000[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mEnvironment: development[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:32:06 PM [32m    LOG[39m [38;5;3m[Bootstrap] [39m[32mSwagger UI: http://localhost:3000/api/docs[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:34:56 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/cities?query=desenza[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:34:56 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"query":"desenza"}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:34:56 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching cities with query: desenza[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:34:56 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting cities with query: desenza[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:34:58 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 1 cities[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:34:58 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/cities?query=desenza - 2484ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:06 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/cities?query=dese[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:06 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"query":"dese"}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:06 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching cities with query: dese[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:06 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting cities with query: dese[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:06 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 3 cities[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:06 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/cities?query=dese - 778ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:08 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/cities?query=DESENZANO+DEL+GARDA+(BRESCIA)[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:08 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"query":"DESENZANO DEL GARDA (BRESCIA)"}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:08 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching cities with query: DESENZANO DEL GARDA (BRESCIA)[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:08 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting cities with query: DESENZANO DEL GARDA (BRESCIA)[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:09 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 0 cities[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:09 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/cities?query=DESENZANO+DEL+GARDA+(BRESCIA) - 758ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:13 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/streets?query=piland&cityId=1071[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:13 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"query":"piland","cityId":"1071"}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:13 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching streets with query: piland, cityId: 1071[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:13 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting streets with query: piland, cityId: 1071[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:13 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 2 streets[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:13 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/streets?query=piland&cityId=1071 - 775ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:14 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/civics?addressId=683198[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:14 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"addressId":"683198"}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:14 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching civics for addressId: 683198, query: all[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:14 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting civics for addressId: 683198, query: all[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:15 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/streets?query=VIA+DEL+PILANDRO&cityId=1071[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:15 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"query":"VIA DEL PILANDRO","cityId":"1071"}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:15 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mSearching streets with query: VIA DEL PILANDRO, cityId: 1071[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:15 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting streets with query: VIA DEL PILANDRO, cityId: 1071[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:16 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 16 civics[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:16 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/civics?addressId=683198 - 1531ms[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:16 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 0 streets[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:16 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/streets?query=VIA+DEL+PILANDRO&cityId=1071 - 1106ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:19 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/geocode?address=VIA+DEL+PILANDRO+14&city=DESENZANO+DEL+GARDA&province=BRESCIA[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:19 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"address":"VIA DEL PILANDRO 14","city":"DESENZANO DEL GARDA","province":"BRESCIA"}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:19 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGeocoding richiesto: VIA DEL PILANDRO 14, DESENZANO DEL GARDA, BRESCIA[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:19 PM [95m  DEBUG[39m [38;5;3m[CoverageController] [39m[95mTentativo 1 - Query completa: VIA DEL PILANDRO 14, DESENZANO DEL GARDA, BRESCIA, Italia[39m
+[33m[Nest] 27446  - [39m10/22/2025, 3:35:19 PM [33m   WARN[39m [38;5;3m[CoverageController] [39m[33mIndirizzo completo non trovato, provo con solo città[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:19 PM [95m  DEBUG[39m [38;5;3m[CoverageController] [39m[95mTentativo 2 - Query città: DESENZANO DEL GARDA, BRESCIA, Italia[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:20 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGeocoding riuscito con città: 45.4694851,10.5389467[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:20 PM [95m  DEBUG[39m [38;5;3m[CoverageController] [39m[95mRisultato Nominatim: Desenzano del Garda, Brescia, Lombardia, 25015, Italia[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:20 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/geocode?address=VIA+DEL+PILANDRO+14&city=DESENZANO+DEL+GARDA&province=BRESCIA - 1548ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:20 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/headers?city=DESENZANO+DEL+GARDA&province=BRESCIA&address=DEL+PILANDRO&number=14&street=VIA[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:20 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"city":"DESENZANO DEL GARDA","province":"BRESCIA","address":"DEL PILANDRO","number":"14","street":"VIA"}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:20 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGetting headers for: VIA DEL PILANDRO 14, DESENZANO DEL GARDA[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:20 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting headers for: VIA DEL PILANDRO 14, DESENZANO DEL GARDA (BRESCIA)[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:21 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 2 headers[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:21 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/headers?city=DESENZANO+DEL+GARDA&province=BRESCIA&address=DEL+PILANDRO&number=14&street=VIA - 939ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:22 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/headers?city=DESENZANO+DEL+GARDA&province=BRESCIA&address=DEL+PILANDRO&number=14&street=VIA[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:22 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"city":"DESENZANO DEL GARDA","province":"BRESCIA","address":"DEL PILANDRO","number":"14","street":"VIA"}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:22 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mGetting headers for: VIA DEL PILANDRO 14, DESENZANO DEL GARDA[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:22 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting headers for: VIA DEL PILANDRO 14, DESENZANO DEL GARDA (BRESCIA)[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:23 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mFound 2 headers[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:23 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/headers?city=DESENZANO+DEL+GARDA&province=BRESCIA&address=DEL+PILANDRO&number=14&street=VIA - 841ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:23 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/services?headersId=382384989&headersId=382384993&cityEgon=38000003220&addressEgon=38000252507&mainEgon=380100030981853&streetNumber=14[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:23 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{"headersId":["382384989","382384993"],"cityEgon":"38000003220","addressEgon":"38000252507","mainEgon":"380100030981853","streetNumber":"14"}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:23 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mChecking coverage for address with headers: 382384989,382384993[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:23 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting coverage services for address: 38000252507, headers: 382384989,382384993[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:29 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 6 services from TWT API[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:29 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered services: 3 out of 6 total services[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:29 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTH" (ServiceId: 21) - BsRsTipoProdotto: 10, BsRsTipoServizio: R, Providers: [10][39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:29 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 10, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":2500}][39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:29 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTCab" (ServiceId: 22) - BsRsTipoProdotto: 11, BsRsTipoServizio: R, Providers: [10][39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:29 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 11, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":200}][39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:29 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFetching profiles for service "FTTCab EVDSL" (ServiceId: 23) - BsRsTipoProdotto: 11, BsRsTipoServizio: R, Providers: [10][39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:29 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mGetting listino for tipoProdotto: 11, tipoServizio: R, providers: [{"IdFornitore":10,"SpeedLimit":200}][39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 5 products from GetListino[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 2 profiles for service FTTH[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 8 products from GetListino[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered profiles for FTTCab (FTTCab < 200M): 7/8 profiles shown[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mDeduplicated FTTCab profiles by speed: 4/7 profiles shown (1 per speed, prefer priority < 9999)[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 4 profiles for service FTTCab[39m
+[95m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [95m  DEBUG[39m [38;5;3m[TwtService] [39m[95mReceived 8 products from GetListino[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFiltered profiles for FTTCab EVDSL (EVDSL >= 200M): 1/8 profiles shown[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [32m    LOG[39m [38;5;3m[CoverageController] [39m[32mFound 1 profiles for service FTTCab EVDSL[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/services?headersId=382384989&headersId=382384993&cityEgon=38000003220&addressEgon=38000252507&mainEgon=380100030981853&streetNumber=14 - 8009ms[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mIncoming Request: GET /api/coverage/config[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32m{"query":{}}[39m
+[32m[Nest] 27446  - [39m10/22/2025, 3:35:31 PM [32m    LOG[39m [38;5;3m[LoggingInterceptor] [39m[32mCompleted GET /api/coverage/config - 2ms[39m

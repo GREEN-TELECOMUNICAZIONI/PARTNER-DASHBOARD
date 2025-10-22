@@ -163,9 +163,9 @@ export const VerificaCopertura: React.FC = () => {
       <AddressAutocomplete onAddressSelected={handleAddressSelected} />
 
       {/* Map View */}
-      {selectedAddress && (
+      {selectedAddress && selectedAddress.coordinates && (
         <MapView
-          position={selectedAddress.coordinates || [45.0703, 7.6869]} // Default to Turin
+          position={selectedAddress.coordinates}
           addressText={`${selectedAddress.streetName} ${selectedAddress.civic}, ${selectedAddress.cityName}`}
         />
       )}

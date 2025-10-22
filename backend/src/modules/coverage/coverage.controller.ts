@@ -630,35 +630,65 @@ export class CoverageController {
     @Query('city') city: string,
     @Query('province') province: string,
   ) {
-    this.logger.log(`Geocoding: ${address}, ${city}, ${province}`);
+    this.logger.log(`Geocoding richiesto: ${address}, ${city}, ${province}`);
 
     try {
-      const query = `${address}, ${city}, ${province}, Italia`;
-      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`;
+      // Attempt 1: Try with full address
+      const fullQuery = `${address}, ${city}, ${province}, Italia`;
+      this.logger.debug(`Tentativo 1 - Query completa: ${fullQuery}`);
 
-      const response = await fetch(url, {
+      const fullUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(fullQuery)}&limit=1`;
+      const fullResponse = await fetch(fullUrl, {
         headers: {
           'User-Agent': 'TWT-Partner-Dashboard/1.0',
         },
       });
 
-      const data = await response.json();
+      const fullData = await fullResponse.json();
 
-      if (data && data.length > 0) {
+      if (fullData && fullData.length > 0) {
+        const coords = [parseFloat(fullData[0].lat), parseFloat(fullData[0].lon)];
+        this.logger.log(`Geocoding riuscito con indirizzo completo: ${coords}`);
+        this.logger.debug(`Risultato Nominatim: ${fullData[0].display_name}`);
         return {
-          success: true,
-          coordinates: [parseFloat(data[0].lat), parseFloat(data[0].lon)],
+          coordinates: coords,
         };
       }
 
+      // Attempt 2: If full address fails, try with just city and province
+      this.logger.warn(`Indirizzo completo non trovato, provo con solo città`);
+      const cityQuery = `${city}, ${province}, Italia`;
+      this.logger.debug(`Tentativo 2 - Query città: ${cityQuery}`);
+
+      const cityUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityQuery)}&limit=1`;
+
+      // Wait 1 second to respect Nominatim rate limit
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      const cityResponse = await fetch(cityUrl, {
+        headers: {
+          'User-Agent': 'TWT-Partner-Dashboard/1.0',
+        },
+      });
+
+      const cityData = await cityResponse.json();
+
+      if (cityData && cityData.length > 0) {
+        const coords = [parseFloat(cityData[0].lat), parseFloat(cityData[0].lon)];
+        this.logger.log(`Geocoding riuscito con città: ${coords}`);
+        this.logger.debug(`Risultato Nominatim: ${cityData[0].display_name}`);
+        return {
+          coordinates: coords,
+        };
+      }
+
+      this.logger.error(`Geocoding fallito per entrambi i tentativi: ${fullQuery}`);
       return {
-        success: false,
         coordinates: null,
       };
     } catch (error) {
       this.logger.error('Geocoding error:', error);
       return {
-        success: false,
         coordinates: null,
       };
     }

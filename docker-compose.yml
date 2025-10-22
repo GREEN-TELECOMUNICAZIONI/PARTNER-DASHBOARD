@@ -10,7 +10,9 @@ services:
   # Backend Service (NestJS API)
   # ==========================================
   backend:
-    image: ghcr.io/${GITHUB_USERNAME}/backend:latest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: backend
     restart: unless-stopped
     environment:
@@ -48,7 +50,9 @@ services:
   # Frontend Service (React + Nginx)
   # ==========================================
   frontend:
-    image: ghcr.io/${GITHUB_USERNAME}/frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: frontend
     restart: unless-stopped
     ports:
