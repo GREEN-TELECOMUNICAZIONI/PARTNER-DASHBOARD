@@ -1,4 +1,5 @@
 import axios from 'axios';
+import qs from 'qs';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
@@ -7,8 +8,10 @@ export const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  paramsSerializer: {
-    indexes: null, // Serialize arrays as: ?headersId=1&headersId=2
+  paramsSerializer: (params) => {
+    // Use qs to properly serialize arrays for NestJS
+    // This will serialize arrays as: ?headersId=1&headersId=2&headersId=3
+    return qs.stringify(params, { arrayFormat: 'repeat' });
   },
 });
 

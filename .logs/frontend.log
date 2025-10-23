@@ -7,3 +7,7 @@
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
+5:30:17 PM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx, /src/components/coverage/AddressAutocomplete.tsx, /src/components/coverage/CoverageResults.tsx
+5:30:20 PM [vite] (client) ✨ new dependencies optimized: qs
+5:30:20 PM [vite] (client) ✨ optimized dependencies changed. reloading
+5:30:49 PM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx, /src/components/coverage/AddressAutocomplete.tsx, /src/components/coverage/CoverageResults.tsx

@@ -1,4 +1,4 @@
-import { Controller, Get, Query, ValidationPipe, Logger } from '@nestjs/common';
+import { Controller, Get, Query, ValidationPipe, Logger, BadRequestException } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import { TwtService } from '../twt/twt.service';
@@ -302,16 +302,38 @@ export class CoverageController {
     status: 404,
     description: 'Nessun servizio disponibile',
   })
-  async getCoverageServices(@Query(ValidationPipe) queryDto: CoverageQueryDto) {
+  async getCoverageServices(
+    @Query('headersId') headersIdRaw: string | string[],
+    @Query('cityEgon') cityEgon: string,
+    @Query('addressEgon') addressEgon: string,
+    @Query('mainEgon') mainEgon: string,
+    @Query('streetNumber') streetNumber: string,
+  ) {
+    // Parse headersId to ensure it's an array of numbers
+    const headersId = Array.isArray(headersIdRaw)
+      ? headersIdRaw.map(id => parseInt(id, 10))
+      : [parseInt(headersIdRaw, 10)];
+
     this.logger.log(
-      `Checking coverage for address with headers: ${queryDto.headersId.join(',')}`,
+      `Checking coverage for address with headers: ${headersId.join(',')}`,
     );
+
+    // Validate parameters
+    if (!headersId.length || headersId.some(isNaN)) {
+      this.logger.error(`Invalid headersId received: ${JSON.stringify(headersIdRaw)}`);
+      throw new BadRequestException('Invalid headersId: must be an array of integers');
+    }
+    if (!cityEgon || !addressEgon || !mainEgon || !streetNumber) {
+      this.logger.error(`Missing required parameters: cityEgon=${cityEgon}, addressEgon=${addressEgon}, mainEgon=${mainEgon}, streetNumber=${streetNumber}`);
+      throw new BadRequestException('Missing required parameters: cityEgon, addressEgon, mainEgon, and streetNumber are required');
+    }
+
     const response = await this.twtService.getCoverageServices(
-      queryDto.headersId,
-      queryDto.cityEgon,
-      queryDto.addressEgon,
-      queryDto.mainEgon,
-      queryDto.streetNumber,
+      headersId,
+      cityEgon,
+      addressEgon,
+      mainEgon,
+      streetNumber,
     );
 
     // Trasforma la risposta TWT nel formato atteso dal frontend
