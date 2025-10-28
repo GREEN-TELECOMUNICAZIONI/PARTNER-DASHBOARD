@@ -1,9 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Layout } from './components/layout/Layout';
 import { Dashboard } from './pages/Dashboard';
 import { VerificaCopertura } from './pages/VerificaCopertura';
+import { VerificaCoperturaWidget } from './pages/VerificaCoperturaWidget';
+import { WidgetVerificaCopertura } from './pages/WidgetVerificaCopertura';
 import { NuovoContratto } from './pages/NuovoContratto';
 import { theme } from './theme/theme';
 
@@ -24,13 +26,18 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>
-          <Layout>
-            <Routes>
+          <Routes>
+            {/* Routes with Layout */}
+            <Route element={<Layout><Outlet /></Layout>}>
               <Route path="/" element={<Dashboard />} />
               <Route path="/verifica-copertura" element={<VerificaCopertura />} />
+              <Route path="/verifica-copertura/widget" element={<VerificaCoperturaWidget />} />
               <Route path="/nuovo-contratto" element={<NuovoContratto />} />
-            </Routes>
-          </Layout>
+            </Route>
+
+            {/* Routes without Layout (for iframe embedding) */}
+            <Route path="/widget-verifica-copertura" element={<WidgetVerificaCopertura />} />
+          </Routes>
         </BrowserRouter>
       </ThemeProvider>
     </QueryClientProvider>

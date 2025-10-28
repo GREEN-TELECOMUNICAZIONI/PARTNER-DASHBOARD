@@ -25,7 +25,7 @@ export const Dashboard: React.FC = () => {
         <Grid item xs={12} md={6}>
           <DashboardCard
             title="Verifica Copertura"
-            description="Controlla la disponibilità dei servizi TWT per un indirizzo specifico. Visualizza le tecnologie disponibili e le velocità offerte."
+            description="Controlla la disponibilità dei servizi per un indirizzo specifico. Visualizza le tecnologie disponibili e le velocità offerte."
             icon={<SearchIcon />}
             buttonText="Verifica Copertura"
             onButtonClick={() => navigate('/verifica-copertura')}

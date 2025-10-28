@@ -1,25 +1,28 @@
 import React, { useState, useCallback } from 'react';
 import {
-  Container,
   Typography,
   Button,
   Box,
   Alert,
   Paper,
-  Link as MuiLink,
+  IconButton,
 } from '@mui/material';
-import { Search as SearchIcon, BugReport as BugReportIcon, OpenInNew as OpenInNewIcon } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Search as SearchIcon, Code as CodeIcon } from '@mui/icons-material';
 import { AddressAutocomplete } from '../components/coverage/AddressAutocomplete';
-import { MapView } from '../components/coverage/MapView';
-import { CoverageResults } from '../components/coverage/CoverageResults';
+import { WidgetCoverageResults } from '../components/coverage/WidgetCoverageResults';
 import { LoadingSpinner } from '../components/coverage/LoadingSpinner';
+import { IframeCodeDialog } from '../components/iframe';
 import { useHeaders, useServices } from '../hooks/useCoverage';
 import type { SelectedAddress } from '../types/api';
 
-export const VerificaCopertura: React.FC = () => {
+/**
+ * Standalone widget for coverage verification
+ * Designed for iframe embedding without layout or map
+ */
+export const WidgetVerificaCopertura: React.FC = () => {
   const [selectedAddress, setSelectedAddress] = useState<SelectedAddress | null>(null);
   const [checkCoverage, setCheckCoverage] = useState(false);
+  const [codeDialogOpen, setCodeDialogOpen] = useState(false);
   const [serviceParams, setServiceParams] = useState<{
     headersId: number[];
     cityEgon: string;
@@ -27,9 +30,6 @@ export const VerificaCopertura: React.FC = () => {
     mainEgon: string;
     streetNumber: string;
   } | null>(null);
-
-  // Debug mode flag from env
-  const isDebugMode = import.meta.env.VITE_DEBUG === 'true';
 
   // Query for headers (triggered manually)
   const {
@@ -102,86 +102,55 @@ export const VerificaCopertura: React.FC = () => {
     }
   };
 
-  // Debug function to test with TORINO CORSO CANONICO GIUSEPPE ALLAMANO 17
-  const handleDebugTest = async () => {
-    const debugAddress: SelectedAddress = {
-      cityId: '5900', // Torino city ID
-      cityName: 'TORINO',
-      province: 'TORINO',
-      streetName: 'CORSO CANONICO GIUSEPPE ALLAMANO',
-      civic: '17',
-      street: 'CORSO',
-      address: 'CANONICO GIUSEPPE ALLAMANO',
-      cityEgon: '38000001274',
-      streetId: '1043922', // Street ID for the address
-      addressId: '1043922', // Address ID
-      addressEgon: '38000069719',
-      mainEgon: '', // Will be populated by handleAddressSelected
-      headersId: [], // Will be populated by handleAddressSelected
-      coordinates: [45.0703, 7.6869], // Turin coordinates
-    };
-
-    await handleAddressSelected(debugAddress);
-    // Wait a bit for state to update
-    setTimeout(() => {
-      handleCheckCoverage();
-    }, 100);
-  };
-
   const isLoading = headersLoading || servicesLoading;
   const error = headersError || servicesError;
 
   return (
-    <Container maxWidth="lg">
-      <Box sx={{ mb: 4 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Box>
-            <Typography variant="h4" component="h1" gutterBottom>
-              Verifica Copertura
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              Seleziona un indirizzo per verificare la disponibilità dei servizi
-            </Typography>
-          </Box>
+    <Box
+      sx={{
+        p: { xs: 2, sm: 3 },
+        minHeight: '100vh',
+        backgroundColor: 'background.default',
+      }}
+    >
+      {/* Compact header for widget */}
+      <Box sx={{ mb: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Typography variant="body2" color="text.secondary">
+          Seleziona un indirizzo per verificare la disponibilità dei servizi
+        </Typography>
 
-          {/* Debug Button - Only visible in debug mode */}
-          {isDebugMode && (
-            <Button
-              variant="outlined"
-              color="warning"
-              size="small"
-              startIcon={<BugReportIcon />}
-              onClick={handleDebugTest}
-              disabled={isLoading}
-              sx={{ ml: 2 }}
-            >
-              Test Torino
-            </Button>
-          )}
-        </Box>
+        {/* Bottone Codice Iframe */}
+        <IconButton
+          onClick={() => setCodeDialogOpen(true)}
+          sx={{
+            color: '#75ae22',
+            border: '1px solid #75ae22',
+            '&:hover': {
+              backgroundColor: 'rgba(117, 174, 34, 0.08)',
+              borderColor: '#5d8b1b',
+            },
+          }}
+          aria-label="Visualizza codice iframe"
+          title="Codice Iframe"
+        >
+          <CodeIcon />
+        </IconButton>
       </Box>
 
       {/* Section 1: Address Autocomplete */}
       <AddressAutocomplete onAddressSelected={handleAddressSelected} />
 
-      {/* Map View */}
-      {selectedAddress && selectedAddress.coordinates && (
-        <MapView
-          position={selectedAddress.coordinates}
-          addressText={`${selectedAddress.streetName} ${selectedAddress.civic}, ${selectedAddress.cityName}`}
-        />
-      )}
-
       {/* Section 2: Check Coverage Button */}
       {selectedAddress && (
-        <Paper sx={{ p: 3, mb: 3, textAlign: 'center' }}>
+        <Paper sx={{ p: 2, mb: 2, textAlign: 'center' }}>
           <Button
             variant="contained"
             size="large"
             startIcon={<SearchIcon />}
             onClick={handleCheckCoverage}
             disabled={isLoading}
-            sx={{ minWidth: 250 }}
+            fullWidth
+            sx={{ maxWidth: 400 }}
           >
             {isLoading ? 'Verifica in corso...' : 'Verifica Copertura'}
           </Button>
@@ -190,14 +159,14 @@ export const VerificaCopertura: React.FC = () => {
 
       {/* Loading State */}
       {isLoading && (
-        <Paper sx={{ p: 3, mb: 3 }}>
+        <Paper sx={{ p: 3, mb: 2 }}>
           <LoadingSpinner message="Ricerca servizi disponibili..." />
         </Paper>
       )}
 
       {/* Error State */}
       {error && checkCoverage && (
-        <Alert severity="error" sx={{ mb: 3 }}>
+        <Alert severity="error" sx={{ mb: 2 }}>
           Si è verificato un errore durante la verifica della copertura.
           {error instanceof Error && ` Dettagli: ${error.message}`}
         </Alert>
@@ -205,48 +174,21 @@ export const VerificaCopertura: React.FC = () => {
 
       {/* No results */}
       {checkCoverage && !isLoading && !error && headers && headers.length === 0 && (
-        <Alert severity="info" sx={{ mb: 3 }}>
+        <Alert severity="info" sx={{ mb: 2 }}>
           Nessuna copertura disponibile per questo indirizzo.
         </Alert>
       )}
 
       {/* Section 3: Coverage Results */}
       {checkCoverage && !isLoading && !error && services && services.length > 0 && (
-        <CoverageResults services={services} />
+        <WidgetCoverageResults services={services} />
       )}
 
-      {/* Link to Widget Version */}
-      <Paper
-        sx={{
-          p: 3,
-          textAlign: 'center',
-          backgroundColor: 'background.default',
-          border: '1px solid',
-          borderColor: 'divider',
-          mt: 3,
-        }}
-      >
-        <Typography variant="body2" color="text.secondary" gutterBottom>
-          Preferisci la versione widget senza mappa?
-        </Typography>
-        <MuiLink
-          component={Link}
-          to="/verifica-copertura/widget"
-          sx={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 0.5,
-            mt: 1,
-            textDecoration: 'none',
-            '&:hover': {
-              textDecoration: 'underline',
-            },
-          }}
-        >
-          Passa alla Modalità Widget
-          <OpenInNewIcon fontSize="small" />
-        </MuiLink>
-      </Paper>
-    </Container>
+      {/* Iframe Code Dialog */}
+      <IframeCodeDialog
+        open={codeDialogOpen}
+        onClose={() => setCodeDialogOpen(false)}
+      />
+    </Box>
   );
 };

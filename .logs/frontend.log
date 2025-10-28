@@ -3,11 +3,52 @@
 > vite
 
 
-  VITE v7.1.9  ready in 172 ms
+  VITE v7.1.9  ready in 235 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
-5:30:17 PM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx, /src/components/coverage/AddressAutocomplete.tsx, /src/components/coverage/CoverageResults.tsx
-5:30:20 PM [vite] (client) ✨ new dependencies optimized: qs
-5:30:20 PM [vite] (client) ✨ optimized dependencies changed. reloading
-5:30:49 PM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx, /src/components/coverage/AddressAutocomplete.tsx, /src/components/coverage/CoverageResults.tsx
+9:23:01 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+9:23:33 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+9:23:49 AM [vite] (client) hmr update /src/App.tsx
+9:23:56 AM [vite] (client) hmr update /src/App.tsx
+9:24:29 AM [vite] (client) hmr update /src/components/iframe/IframeContainer.tsx
+9:24:35 AM [vite] (client) hmr update /src/components/iframe/IframeContainer.tsx
+9:24:42 AM [vite] (client) hmr update /src/components/iframe/IframeContainer.tsx
+9:24:48 AM [vite] (client) hmr update /src/components/iframe/IframeContainer.tsx
+9:24:55 AM [vite] (client) hmr update /src/components/iframe/IframeErrorBoundary.tsx
+9:25:18 AM [vite] (client) hmr update /src/components/iframe/IframeContainer.tsx
+9:58:11 AM [vite] (client) hmr update /src/App.tsx
+9:58:22 AM [vite] (client) page reload src/main.tsx
+9:58:34 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+9:58:40 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+9:58:52 AM [vite] (client) hmr update /src/pages/WidgetVerificaCopertura.tsx
+9:59:03 AM [vite] (client) hmr update /src/pages/VerificaCoperturaAvanzata.tsx
+9:59:15 AM [vite] (client) hmr update /src/pages/Dashboard.tsx
+10:04:06 AM [vite] (client) hmr update /src/App.tsx
+10:04:17 AM [vite] (client) hmr update /src/App.tsx
+10:04:24 AM [vite] (client) hmr update /src/App.tsx
+10:28:03 AM [vite] (client) hmr update /src/pages/WidgetVerificaCopertura.tsx
+10:28:08 AM [vite] (client) hmr update /src/pages/WidgetVerificaCopertura.tsx
+10:29:52 AM [vite] (client) hmr update /src/components/coverage/WidgetCoverageResults.tsx
+10:38:13 AM [vite] (client) hmr update /src/components/coverage/WidgetCoverageResults.tsx
+10:38:33 AM [vite] (client) hmr update /src/components/coverage/WidgetCoverageResults.tsx
+10:44:38 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+10:44:51 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+10:44:57 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+10:45:06 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+10:45:12 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+10:49:45 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+10:49:45 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+10:50:12 AM [vite] (client) hmr update /src/pages/WidgetVerificaCopertura.tsx
+10:50:12 AM [vite] (client) hmr update /src/pages/WidgetVerificaCopertura.tsx
+10:50:12 AM [vite] (client) hmr update /src/pages/WidgetVerificaCopertura.tsx
+10:50:28 AM [vite] (client) hmr update /src/pages/WidgetVerificaCopertura.tsx
+11:11:28 AM [vite] (client) hmr update /src/components/iframe/IframeContainer.tsx
+11:11:28 AM [vite] (client) hmr update /src/components/iframe/IframeContainer.tsx
+11:11:39 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+11:19:38 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+11:19:55 AM [vite] (client) hmr update /src/App.tsx
+11:20:03 AM [vite] (client) hmr update /src/App.tsx
+11:21:25 AM [vite] (client) hmr update /src/pages/VerificaCoperturaAvanzata.tsx
+11:23:29 AM [vite] (client) hmr update /src/pages/VerificaCopertura.tsx
+11:39:52 AM [vite] (client) hmr update /src/pages/VerificaCoperturaWidget.tsx

@@ -14,6 +14,10 @@ export const theme = createTheme({
       dark: '#9a0036',
       contrastText: '#fff',
     },
+    text: {
+      primary: '#444444',
+      secondary: '#444444',
+    },
     background: {
       default: '#f5f5f5',
       paper: '#ffffff',
@@ -32,39 +36,57 @@ export const theme = createTheme({
     },
   },
   typography: {
+    // Font per testi normali
     fontFamily: [
-      'Inter',
+      'Helvetica',
+      'Helvetica Neue',
+      'Arial',
       '-apple-system',
       'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
       'sans-serif',
     ].join(','),
+    // Font per titoli (h1-h6)
     h1: {
+      fontFamily: "'Harabara Mais', 'Montserrat', 'Arial Black', sans-serif",
       fontSize: '2.5rem',
-      fontWeight: 600,
+      fontWeight: 700,
+      color: '#444444',
     },
     h2: {
+      fontFamily: "'Harabara Mais', 'Montserrat', 'Arial Black', sans-serif",
       fontSize: '2rem',
-      fontWeight: 600,
+      fontWeight: 700,
+      color: '#444444',
     },
     h3: {
+      fontFamily: "'Harabara Mais', 'Montserrat', 'Arial Black', sans-serif",
       fontSize: '1.75rem',
-      fontWeight: 600,
+      fontWeight: 700,
+      color: '#444444',
     },
     h4: {
+      fontFamily: "'Harabara Mais', 'Montserrat', 'Arial Black', sans-serif",
       fontSize: '1.5rem',
-      fontWeight: 600,
+      fontWeight: 700,
+      color: '#444444',
     },
     h5: {
+      fontFamily: "'Harabara Mais', 'Montserrat', 'Arial Black', sans-serif",
       fontSize: '1.25rem',
-      fontWeight: 600,
+      fontWeight: 700,
+      color: '#444444',
     },
     h6: {
+      fontFamily: "'Harabara Mais', 'Montserrat', 'Arial Black', sans-serif",
       fontSize: '1rem',
-      fontWeight: 600,
+      fontWeight: 700,
+      color: '#444444',
+    },
+    body1: {
+      color: '#444444',
+    },
+    body2: {
+      color: '#444444',
     },
   },
   shape: {

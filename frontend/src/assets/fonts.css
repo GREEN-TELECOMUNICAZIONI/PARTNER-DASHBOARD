@@ -1,0 +1,15 @@
+/* Harabara Mais Bold - Font per titoli */
+@font-face {
+  font-family: 'Harabara Mais';
+  src: local('Harabara Mais Bold'),
+       local('HarabaraMais-Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback se il font non è disponibile */
+/* Nota: Il font Harabara Mais Bold deve essere installato nel sistema
+   o fornito come file .woff/.woff2 nella directory public/fonts/ */
+
+/* Helvetica è un font di sistema, non serve @font-face */
