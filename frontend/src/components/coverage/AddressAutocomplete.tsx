@@ -7,9 +7,9 @@ import {
   Typography,
   CircularProgress,
 } from '@mui/material';
-import { useCities, useStreets, useCivics } from '../../hooks/useCoverage';
+import { useCities, useStreets } from '../../hooks/useCoverage';
 import { useDebounce } from '../../hooks/useDebounce';
-import type { City, Street, Civic, SelectedAddress } from '../../types/api';
+import type { City, Street, SelectedAddress } from '../../types/api';
 
 interface AddressAutocompleteProps {
   onAddressSelected: (address: SelectedAddress) => void;
@@ -20,10 +20,10 @@ export const AddressAutocomplete: React.FC<AddressAutocompleteProps> = ({
 }) => {
   const [cityQuery, setCityQuery] = useState('');
   const [streetQuery, setStreetQuery] = useState('');
+  const [civicValue, setCivicValue] = useState('');
 
   const [selectedCity, setSelectedCity] = useState<City | null>(null);
   const [selectedStreet, setSelectedStreet] = useState<Street | null>(null);
-  const [selectedCivic, setSelectedCivic] = useState<Civic | null>(null);
 
   // Debounce delle query per ridurre il numero di chiamate API
   // Le chiamate partono solo 400ms dopo che l'utente smette di digitare
@@ -35,14 +35,32 @@ export const AddressAutocomplete: React.FC<AddressAutocompleteProps> = ({
     debouncedStreetQuery,
     selectedCity?.id || ''
   );
-  const { data: civicsData, isLoading: civicsLoading, error: civicsError } = useCivics(
-    selectedStreet?.id || ''
-  );
 
   // Ensure options are always arrays for MUI Autocomplete
   const cities = Array.isArray(citiesData) ? citiesData : [];
   const streets = Array.isArray(streetsData) ? streetsData : [];
-  const civics = Array.isArray(civicsData) ? civicsData : [];
+
+  const handleCivicConfirm = (civic: string) => {
+    const trimmed = civic.trim();
+    if (trimmed && selectedCity && selectedStreet) {
+      const address: SelectedAddress = {
+        cityId: selectedCity.id,
+        cityName: selectedCity.name,
+        province: selectedCity.province,
+        cityEgon: selectedCity.egonCode,
+        streetId: selectedStreet.id,
+        streetName: selectedStreet.name,
+        street: selectedStreet.street,
+        address: selectedStreet.address,
+        addressEgon: selectedStreet.egonCode,
+        civic: trimmed,
+        addressId: selectedStreet.id,
+        mainEgon: '', // Will be filled after headers call
+        headersId: [], // Will be filled after headers call
+      };
+      onAddressSelected(address);
+    }
+  };
 
   return (
     <Paper sx={{ p: 3, mb: 3 }}>
@@ -61,7 +79,7 @@ export const AddressAutocomplete: React.FC<AddressAutocompleteProps> = ({
             onChange={(_, newValue) => {
               setSelectedCity(newValue);
               setSelectedStreet(null);
-              setSelectedCivic(null);
+              setCivicValue('');
             }}
             onInputChange={(_, newInputValue) => {
               setCityQuery(newInputValue);
@@ -102,7 +120,7 @@ export const AddressAutocomplete: React.FC<AddressAutocompleteProps> = ({
             value={selectedStreet}
             onChange={(_, newValue) => {
               setSelectedStreet(newValue);
-              setSelectedCivic(null);
+              setCivicValue('');
             }}
             onInputChange={(_, newInputValue) => {
               setStreetQuery(newInputValue);
@@ -138,62 +156,21 @@ export const AddressAutocomplete: React.FC<AddressAutocompleteProps> = ({
           />
         </Grid>
 
-        {/* Civic Autocomplete */}
+        {/* Civic TextField (input libero - GetStreetNumberByAddress non più disponibile) */}
         <Grid item xs={12} md={3}>
-          <Autocomplete
-            options={civics}
-            getOptionLabel={(option) => typeof option === 'string' ? option : option.civic}
-            value={selectedCivic}
-            onChange={(_, newValue) => {
-              setSelectedCivic(newValue);
-              // Trigger address selection only when civic is selected
-              if (newValue && selectedCity && selectedStreet) {
-                const address: SelectedAddress = {
-                  cityId: selectedCity.id,
-                  cityName: selectedCity.name,
-                  province: selectedCity.province,
-                  cityEgon: selectedCity.egonCode,
-                  streetId: selectedStreet.id,
-                  streetName: selectedStreet.name,
-                  street: selectedStreet.street,
-                  address: selectedStreet.address,
-                  addressEgon: selectedStreet.egonCode,
-                  civic: newValue.civic,
-                  addressId: newValue.addressId,
-                  mainEgon: '', // Will be filled after headers call
-                  headersId: [], // Will be filled after headers call
-                };
-                onAddressSelected(address);
+          <TextField
+            label="Civico"
+            placeholder="Es: 1, 10, 12A..."
+            value={civicValue}
+            onChange={(e) => setCivicValue(e.target.value)}
+            onBlur={() => handleCivicConfirm(civicValue)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleCivicConfirm(civicValue);
               }
             }}
-            loading={civicsLoading}
             disabled={!selectedStreet}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Civico"
-                placeholder="Seleziona..."
-                InputProps={{
-                  ...params.InputProps,
-                  endAdornment: (
-                    <>
-                      {civicsLoading ? <CircularProgress color="inherit" size={20} /> : null}
-                      {params.InputProps.endAdornment}
-                    </>
-                  ),
-                }}
-              />
-            )}
-            noOptionsText={
-              civicsError
-                ? "Errore nel caricamento dei civici"
-                : !selectedStreet
-                ? "Seleziona prima una via"
-                : "Nessun civico trovato"
-            }
-            isOptionEqualToValue={(option, value) =>
-              option?.civic === value?.civic && option?.addressId === value?.addressId
-            }
+            fullWidth
           />
         </Grid>
       </Grid>
